@@ -27,13 +27,13 @@ const config: GatsbyConfig = {
     },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-mdx`,
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "posts",
-        path: `./src/posts`,
-      },
-    },
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "posts",
+    //     path: `./src/posts`,
+    //   },
+    // },
     {
       resolve: "gatsby-plugin-react-svg",
       options: {
