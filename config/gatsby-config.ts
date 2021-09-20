@@ -10,8 +10,15 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `./src/images`,
+        name: `contentImages`,
+        path: `./src/images/content`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "logos",
+        path: `./src/images/partnerLogos`,
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -34,14 +41,14 @@ const config: GatsbyConfig = {
     //     path: `./src/posts`,
     //   },
     // },
-    {
-      resolve: "gatsby-plugin-react-svg",
-      options: {
-        rule: {
-          include: /images/,
-        },
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-react-svg",
+    //   options: {
+    //     rule: {
+    //       include: /images/,
+    //     },
+    //   },
+    // },
     `gatsby-plugin-gatsby-cloud`,
   ],
 }

@@ -13,7 +13,7 @@ export const darkTheme: Theme = {
   text: "#eee",
   background: "#272830",
   feature: "#191a20",
-  footer: "#25282f",
+  footer: "#191a20",
   footerText: "#ececec",
   highlight: "#bd6b88",
 }

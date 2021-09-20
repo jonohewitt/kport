@@ -5,6 +5,7 @@ import styled from "styled-components"
 import { useGlobalState } from "../context/globalState"
 import { StaticImage } from "gatsby-plugin-image"
 import { ContactButton } from "../components/contactButton"
+import { Partners } from "../components/partners"
 
 const Caption = styled.figcaption<{ side?: string }>`
   margin: 10px 0;
@@ -53,7 +54,7 @@ const TextSection = styled.section`
 const FeatureText = styled.div<{ side?: string }>`
   padding: ${props => (props.side === "left" ? "0 0 0 10%" : "0 10% 0 0")};
   h2 {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 500;
     line-height: 1.6;
     margin-bottom: 22px;
@@ -105,6 +106,15 @@ const Features = styled.div``
 const Concept = styled(FeatureSection)``
 const Sustainability = styled(FeatureSection)``
 const Experience = styled(FeatureSection)``
+const SmartCity = styled(FeatureSection)`
+  ul {
+    list-style: disc;
+    li {
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+  }
+`
 
 const IndexPage: FC<PageProps> = () => {
   const { dispatch } = useGlobalState()
@@ -114,7 +124,7 @@ const IndexPage: FC<PageProps> = () => {
       <Seo title="Home" />
       <figure>
         <StaticImage
-          src="../images/blue-sky.jpg"
+          src="../images/content/blue-sky.jpg"
           alt=""
           loading="eager"
           layout="fullWidth"
@@ -142,14 +152,14 @@ const IndexPage: FC<PageProps> = () => {
         <ContactButton />
       </Header>
       <figure>
-        <StaticImage src="../images/concept.jpg" alt="" layout="fullWidth" />
+        <StaticImage src="../images/content/concept.jpg" alt="" layout="fullWidth" />
         <FullWidthCaption>Concept image</FullWidthCaption>
       </figure>
       <Features>
         <Concept side="left" aspect="portrait">
           <figure>
             <StaticImage
-              src="../images/komorebi.jpg"
+              src="../images/content/komorebi.jpg"
               alt=""
               layout="constrained"
             />
@@ -189,7 +199,7 @@ const IndexPage: FC<PageProps> = () => {
           </FeatureText>
           <figure>
             <StaticImage
-              src="../images/sustainability.jpg"
+              src="../images/content/sustainability.jpg"
               alt=""
               layout="constrained"
             />
@@ -203,7 +213,7 @@ const IndexPage: FC<PageProps> = () => {
         <Experience side="left">
           <figure>
             <StaticImage
-              src="../images/experience.jpg"
+              src="../images/content/experience.jpg"
               alt=""
               layout="constrained"
             />
@@ -224,9 +234,50 @@ const IndexPage: FC<PageProps> = () => {
             </p>
           </FeatureText>
         </Experience>
+
+        <SmartCity>
+          <FeatureText side="left">
+            <h2>Smart city and energy</h2>
+            <p>
+              To meet the energy challenge, K:Port can be smart city enabled,
+              providing greater resilience and autonomy through its ability to:
+            </p>
+            <ul>
+              <li>
+                Generate and store renewable energy across a entire district.
+              </li>
+              <li>
+                Dynamically trade and moderate energy demand across the same
+                area.
+              </li>
+              <li>
+                Interact with electric vehicles in a more sophisticated way
+                through V2G, both charging, but also discharging, vehicles when
+                power is needed elsewhere.
+              </li>
+            </ul>
+            <p>
+              The result is a significant reduction in energy costs and carbon
+              footprint for the K:Port operator and its district partners, as
+              well as the virtual elimination of any energy downtime, and a new
+              and closer relationship between energy providers and consumers.
+            </p>
+          </FeatureText>
+          <figure>
+            <StaticImage
+              src="../images/content/energy.jpg"
+              alt=""
+              layout="constrained"
+            />
+            <Caption side="left">
+              <span className="bold">Client:</span> Transport for London -
+              Woolwich, London
+            </Caption>
+          </figure>
+        </SmartCity>
       </Features>
       <figure>
-        <StaticImage src="../images/drone.jpg" alt="" layout="fullWidth" />
+        <StaticImage src="../images/content/drone.jpg" alt="" layout="fullWidth" />
         <FullWidthCaption>
           <span className="bold">Client:</span> North Somerset Council -
           Portishead Marina
@@ -249,7 +300,7 @@ const IndexPage: FC<PageProps> = () => {
         <ContactButton />
       </TextSection>
       <figure>
-        <StaticImage src="../images/2cv.jpg" alt="" layout="fullWidth" />
+        <StaticImage src="../images/content/2cv.jpg" alt="" layout="fullWidth" />
         <FullWidthCaption>Development model</FullWidthCaption>
       </figure>
       <TextSection>
@@ -277,6 +328,8 @@ const IndexPage: FC<PageProps> = () => {
           In December 2014 we were named the UK’s ‘Sustainable Architect of the
           Year’ for our pioneering work across the sector.
         </p>
+
+        {/* <Partners /> */}
       </TextSection>
 
       {/* <p>Welcome to your new Gatsby site.</p>
