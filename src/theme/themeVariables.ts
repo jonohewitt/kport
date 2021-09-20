@@ -10,9 +10,9 @@ export const lightTheme = {
 }
 
 export const darkTheme: Theme = {
-  text: "#ddd",
+  text: "#eee",
   background: "#272830",
-  feature: "#f5f5f5",
+  feature: "#191a20",
   footer: "#25282f",
   footerText: "#ececec",
   highlight: "#bd6b88",
