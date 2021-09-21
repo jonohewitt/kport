@@ -122,12 +122,15 @@ const IndexPage: FC<PageProps> = () => {
   return (
     <>
       <Seo title="Home" />
+
       <figure>
         <StaticImage
           src="../images/content/kport-bluesky.jpg"
-          alt=""
+          alt="Detail of the K:Port timber structure with photovoltaic panels casting shadows"
           loading="eager"
           layout="fullWidth"
+          imgStyle={{ objectFit: "cover" }}
+          style={{ maxHeight: "45vh" }}
         />
         <FullWidthCaption>
           <span className="bold">Client:</span> Transport for London - Woolwich,
@@ -154,7 +157,7 @@ const IndexPage: FC<PageProps> = () => {
       <figure>
         <StaticImage
           src="../images/content/kport-concept.jpg"
-          alt=""
+          alt="Computer rendered graphic of a K:Port concept including community spaces"
           layout="fullWidth"
         />
         <FullWidthCaption>Concept image</FullWidthCaption>
@@ -164,7 +167,7 @@ const IndexPage: FC<PageProps> = () => {
           <figure>
             <StaticImage
               src="../images/content/kport-komorebi.jpg"
-              alt=""
+              alt="Shadows and light shining through photovoltaic panels onto the K:Port timber lattice structure."
               layout="constrained"
             />
             <Caption side="left">
@@ -202,7 +205,7 @@ const IndexPage: FC<PageProps> = () => {
           <figure>
             <StaticImage
               src="../images/content/kport-rainchains.jpg"
-              alt=""
+              alt="Detail of the chains used to facilitate rain water drainage from the roof panels"
               layout="constrained"
             />
             <Caption side="left">
@@ -216,7 +219,7 @@ const IndexPage: FC<PageProps> = () => {
           <figure>
             <StaticImage
               src="../images/content/kport-night.jpg"
-              alt=""
+              alt="K:Port shown at night with LED strip lighting providing a safe environment"
               layout="constrained"
             />
             <Caption side="left">
@@ -257,7 +260,7 @@ const IndexPage: FC<PageProps> = () => {
           <figure>
             <StaticImage
               src="../images/content/kport-in-use.jpg"
-              alt=""
+              alt="A man demonstrates K:Port in use by charging a Tesla electric car under the canopy"
               layout="constrained"
             />
             <Caption side="left">
@@ -270,7 +273,7 @@ const IndexPage: FC<PageProps> = () => {
       <figure>
         <StaticImage
           src="../images/content/kport-drone.jpg"
-          alt=""
+          alt="Arial view of a single K:port 'tree' structure in the centre of a ringed road"
           layout="fullWidth"
         />
         <FullWidthCaption>
@@ -297,7 +300,7 @@ const IndexPage: FC<PageProps> = () => {
       <figure>
         <StaticImage
           src="../images/content/kport-2cv.jpg"
-          alt=""
+          alt="A miniature scaled development model of K:Port with a toy car."
           layout="fullWidth"
         />
         <FullWidthCaption>Development model</FullWidthCaption>
