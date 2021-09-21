@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
-import { ContactButton } from "./contactButton"
+import { ContactButton, ContactWrapper } from "./contactButton"
 import { navOptions } from "./nav"
 
 const Wrapper = styled.footer`
@@ -25,10 +25,18 @@ const FooterNav = styled.nav`
   a {
     color: var(--footerText);
   }
+
+  ${ContactWrapper} {
+    :hover {
+      color: ${props => props.theme.footer};
+      background: ${props => props.theme.footerText};
+      border: 2px solid ${props => props.theme.footerText};
+    }
+  }
 `
 
 const FooterNavList = styled.ul`
-  /* display: flex; */
+  margin-bottom: 10px;
 `
 const FooterNavItem = styled.li``
 

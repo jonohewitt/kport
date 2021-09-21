@@ -5,15 +5,12 @@ import { kportLogo } from "../images/svgs/kport-logo"
 import { ContactButton } from "./contactButton"
 
 const NavBar = styled.nav`
-  margin: 30px 30px 40px 0;
+  padding: 30px 30px 40px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
-const NavList = styled.ul`
-  display: flex;
-  align-items: baseline;
-`
+
 const NavItem = styled.li`
   margin-left: 25px;
 `
@@ -29,11 +26,23 @@ const NavLink = styled(Link)`
   }
 `
 
+const NavList = styled.ul`
+  display: flex;
+  align-items: baseline;
+
+  ${NavLink} {
+    padding-bottom: 7px;
+    :hover {
+      border-bottom: 2px solid var(--text);
+    }
+  }
+`
+
 export const navOptions = [
-  { name: "Concept", link: "/concept" },
-  { name: "Sustainability", link: "/sustainability" },
-  { name: "User Experience", link: "/userexperience" },
-  { name: "Smart City", link: "/smartcity" },
+  { name: "Concept", link: "#concept" },
+  { name: "Sustainability", link: "#sustainability" },
+  { name: "User Experience", link: "#experience" },
+  { name: "Smart City", link: "#smartcity" },
 ]
 
 export const Nav = () => {

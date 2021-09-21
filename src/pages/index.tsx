@@ -160,7 +160,7 @@ const IndexPage: FC<PageProps> = () => {
         <FullWidthCaption>Concept image</FullWidthCaption>
       </figure>
       <Features>
-        <Concept side="left" aspect="portrait">
+        <Concept id="concept" side="left" aspect="portrait">
           <figure>
             <StaticImage
               src="../images/content/kport-komorebi.jpg"
@@ -175,18 +175,17 @@ const IndexPage: FC<PageProps> = () => {
           <FeatureText side="right">
             <h2>Photosynthetic architecture</h2>
             <p>
-              Hewitt Studios’ concept for K:Port® derives from the Japanese
-              notion of “Komorebi”; the dappled light which occurs when sunlight
-              shines through the leaves of a tree. The essence of the tree is
-              apparent throughout the K:Port®, from the form of the canopy
-              itself and the timbers which make up its structure, to the
-              collection and use of rainwater and sunlight via the solar PV
-              surface.
+              Our concept for K:Port® derives from the Japanese notion of
+              “Komorebi”; the dappled light which occurs when sunlight shines
+              through the leaves of a tree. The essence of the tree is apparent
+              throughout K:Port®, from the form of the canopy itself and the
+              timbers which make up its structure, to the collection and use of
+              rainwater and sunlight via the solar PV surface.
             </p>
           </FeatureText>
         </Concept>
 
-        <Sustainability>
+        <Sustainability id="sustainability">
           <FeatureText side="left">
             <h2>Sustainability at its core</h2>
             <p>
@@ -196,9 +195,8 @@ const IndexPage: FC<PageProps> = () => {
             </p>
             <p>
               It is energy efficient, with integrated energy generation from the
-              Solar PV canopy and can be upgraded with battery storage and smart
-              charging. K:Port® can also be Smart City enabled with smart
-              sensors, energy monitoring and energy aggregation functionality.
+              solar PV canopy and can be upgraded with battery storage and smart
+              charging.
             </p>
           </FeatureText>
           <figure>
@@ -214,7 +212,7 @@ const IndexPage: FC<PageProps> = () => {
           </figure>
         </Sustainability>
 
-        <Experience side="left">
+        <Experience id="experience" side="left">
           <figure>
             <StaticImage
               src="../images/content/kport-night.jpg"
@@ -229,42 +227,31 @@ const IndexPage: FC<PageProps> = () => {
           <FeatureText side="right">
             <h2>Easy, enjoyable and safe to use</h2>
             <p>
-              The high-quality environment can be made available 24/7 via the
-              incorporation of integrated LED lighting, CCTV and motion sensing
-              / EV bay detection. K:Port® provides sheltered charging for EVs,
-              e-bikes and e-scooters, keeping equipment dry and cool. Spaces are
-              fully accessible in accordance with Part M and charge points are
-              protected in line with IET guidelines.
+              K:Port® provides sheltered charging for EVs, e-bikes and
+              e-scooters, keeping equipment dry and cool. Spaces are fully
+              accessible and charge points are impact protected.{" "}
+            </p>
+            <p>
+              This high-quality environment can be made available 24/7 via the
+              incorporation of integrated LED lighting, CCTV, motion sensing and
+              EV bay detection.
             </p>
           </FeatureText>
         </Experience>
 
-        <SmartCity>
+        <SmartCity id="smartcity">
           <FeatureText side="left">
-            <h2>Smart city and energy</h2>
+            <h2>Smart City enabled</h2>
             <p>
-              To meet the energy challenge, K:Port can be smart city enabled,
-              providing greater resilience and autonomy through its ability to:
+              K:Port can provide greater energy resilience and autonomy through
+              its ability to generate, store, trade and moderate renewable
+              power. Interaction with electric vehicles is possible through V2G.
             </p>
-            <ul>
-              <li>
-                Generate and store renewable energy across a entire district.
-              </li>
-              <li>
-                Dynamically trade and moderate energy demand across the same
-                area.
-              </li>
-              <li>
-                Interact with electric vehicles in a more sophisticated way
-                through V2G, both charging, but also discharging, vehicles when
-                power is needed elsewhere.
-              </li>
-            </ul>
+
             <p>
               The result is a significant reduction in energy costs and carbon
-              footprint for the K:Port operator and its district partners, as
-              well as the virtual elimination of any energy downtime, and a new
-              and closer relationship between energy providers and consumers.
+              footprint for the K:Port® operator, as well as the virtual
+              elimination of any energy downtime.
             </p>
           </FeatureText>
           <figure>
@@ -295,15 +282,15 @@ const IndexPage: FC<PageProps> = () => {
         <h2>
           K:Port® is capable of rapid implementation, with an established supply
           chain ready to deliver modular, prefabricated components on site to be
-          constructed in 2-3 weeks.
+          constructed in 3 weeks.
         </h2>
         <p>
           Hewitt Studios have a developed kit of parts available to fit any
           site, with significant economies of scale to be achieved for large
           role outs. K:Port® is cheap and easy to maintain and at the end of its
-          life, the timber frame has been designed to be re-locatable (to
-          another site), re-usable (as a building frame) and / or disposable (as
-          biomass fuel), ensuring a long-term sustainable legacy.
+          life, the timber frame has been designed to be re-locatable and
+          re-usable, and ultimately utilised as biomass fuel, ensuring a
+          long-term sustainable legacy.
         </p>
         <ContactButton />
       </TextSection>
@@ -317,28 +304,25 @@ const IndexPage: FC<PageProps> = () => {
       </figure>
       <TextSection>
         <h2>
-          K:Port® has been developed by Hewitt Studios LLP, an award-winning
-          Architecture and Urban Design practice.
+          K:Port® has been developed by Hewitt Studios LLP - an innovative
+          multi-disciplinary studio specialising in extraordinary, sustainable
+          environments which inspire change.
         </h2>
         <p>
-          Bath-based Hewitt Studios are an innovative multi-disciplinary studio
-          specialising in extraordinary, sustainable environments which inspire
-          change.
+          Hewitt Studios LLP have determinedly pursued an accessible and
+          design-led approach to sustainable architecture, placing environmental
+          technologies fundamentally at the heart of each of our projects. Our
+          work has been internationally recognised and we were named the UK’s
+          “Sustainable Architect of the Year” in 2014 for our pioneering work
+          across the sector.
         </p>
         <p>
-          Since our inception in 2008 Hewitt Studios has determinedly pursued an
-          accessible and design-led approach to sustainable architecture.
-          Working through a recession in which sustainability was widely
-          perceived as an unaffordable ‘extra’, we have sought to place it
-          fundamentally at the heart of each of our projects – creating outcomes
-          (and value) that wouldn’t have been possible without this impetus;
-          leverage additional funding, achieving difficult planning permissions,
-          underwriting business plans, reinvigorating brownfield sites and
-          creating inspirational and educational spaces.
-        </p>
-        <p>
-          In December 2014 we were named the UK’s ‘Sustainable Architect of the
-          Year’ for our pioneering work across the sector.
+          K:Port® is underpinned by a full range of urban design and
+          architectural consultancy services offered by Hewitt Studios LLP.
+          These include business planning, research and feasibility studies,
+          site selection, planning, building control, public consultation,
+          regulatory approvals, passivhaus certified design, project management
+          and procurement.
         </p>
 
         {/* <Partners /> */}
