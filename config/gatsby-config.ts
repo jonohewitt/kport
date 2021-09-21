@@ -5,6 +5,7 @@ const config: GatsbyConfig = {
     title: `K:Port`,
     description: `K:Port® is a proven smart city solution, designed to inspire and enable the sustainable electrification of transport.`,
     author: `Hewitt Studios LLP`,
+    siteUrl: "https://kport.co.uk",
   },
   plugins: [
     {
@@ -50,6 +51,7 @@ const config: GatsbyConfig = {
     //   },
     // },
     `gatsby-plugin-gatsby-cloud`,
+    "gatsby-plugin-robots-txt",
   ],
 }
 
