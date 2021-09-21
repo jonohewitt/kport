@@ -56,8 +56,10 @@ export const navOptions = [
 
 export const Nav = () => {
   return (
-    <NavBar>
-      <NavLink to="/">{kportLogo}</NavLink>
+    <NavBar aria-label="Primary navigation">
+      <NavLink to="/" aria-label="Home">
+        {kportLogo}
+      </NavLink>
       <NavList>
         {navOptions.map(option => (
           <NavItem hideable key={option.name}>

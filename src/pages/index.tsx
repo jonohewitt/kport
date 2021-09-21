@@ -68,7 +68,7 @@ const FeatureText = styled.div<{ side?: string }>`
 
 const FeatureSection = styled.section<{ side?: string; aspect?: string }>`
   background: ${props => props.theme.feature};
-  padding: 60px 0;
+  padding: 30px 0;
   display: grid;
   align-items: center;
   grid-gap: 10%;
@@ -97,7 +97,7 @@ const FeatureSection = styled.section<{ side?: string; aspect?: string }>`
   }
 
   figure {
-    ${props => props.aspect === "portrait" && "margin-left: 20%;"}
+    ${props => props.aspect === "portrait" && "margin-left: 10%;"}
   }
 `
 
@@ -133,24 +133,21 @@ const IndexPage: FC<PageProps> = () => {
           style={{ maxHeight: "55vh" }}
         />
         <FullWidthCaption>
-          <span className="bold">Client:</span> Transport for London - Woolwich,
-          London
+          <span className="bold">Client:</span> North Somerset Council -
+          Portishead Marina
         </FullWidthCaption>
       </figure>
       <Header>
         <h1>
-          K:Port® is a low-carbon, multi-modal transport solution designed to
-          democratise e-mobility and inspire behavioural change within the
-          communities it serves.
+          K:Port® is a proven smart city solution, designed to inspire and
+          enable the sustainable electrification of transport.
         </h1>
         <p>
-          Representing a fresh approach to e-mobility and a declaration of the
-          ‘art of the possible’, Hewitt Studios’ intention is that this
-          attractive, front-of house mobility hub will offer, with a clear focus
-          on well-being, health and sustainability, help to motivate consumer
-          changes in behaviour. Unlike established and familiar solutions,
-          K:Port® allows deployment in prominent and sensitive locations, with
-          minimal environmental impact and a secure & flexible long-term legacy.
+          A low-carbon, multi-modal transport hub, K:Port® has been created by
+          award winning architects Hewitt Studios LLP to democratise e-mobility
+          and inspire behavioural change within local communities. Our solution
+          enables deployment in prominent and sensitive locations, with minimal
+          environmental impact and a secure & flexible long-term legacy.
         </p>
         <ContactButton />
       </Header>
@@ -171,8 +168,8 @@ const IndexPage: FC<PageProps> = () => {
               layout="constrained"
             />
             <Caption side="left">
-              <span className="bold">Client:</span> Transport for London -
-              Woolwich, London
+              <span className="bold">Client:</span> North Somerset Council -
+              Portishead Marina
             </Caption>
           </figure>
           <FeatureText side="right">
@@ -232,7 +229,7 @@ const IndexPage: FC<PageProps> = () => {
             <p>
               K:Port® provides sheltered charging for EVs, e-bikes and
               e-scooters, keeping equipment dry and cool. Spaces are fully
-              accessible and charge points are impact protected.{" "}
+              accessible and charge points are impact protected.
             </p>
             <p>
               This high-quality environment can be made available 24/7 via the

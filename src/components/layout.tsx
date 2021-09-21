@@ -31,7 +31,7 @@ export const Layout: FC = ({ children }) => {
   )
 }
 
-const Content = styled.div`
+const Content = styled.main`
   flex-grow: 1;
   margin: 0 auto;
   /* width: 90%;

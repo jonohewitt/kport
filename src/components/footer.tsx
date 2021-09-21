@@ -175,23 +175,35 @@ export const Footer = () => {
           <a
             href="https://www.linkedin.com/company/hewitt-studios"
             target="_blank"
+            rel="noopener"
+            aria-label="Visit our LinkedIn account"
           >
             {linkedInSVG}
           </a>
         </li>
         <li>
-          <a href="https://www.instagram.com/hewittstudios/" target="_blank">
+          <a
+            href="https://www.instagram.com/hewittstudios/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Visit our Instagram account"
+          >
             {instaSVG}
           </a>
         </li>
         <li>
-          <a href="https://www.twitter.com/hewittstudios" target="_blank">
+          <a
+            href="https://www.twitter.com/hewittstudios"
+            target="_blank"
+            rel="noopener"
+            aria-label="Visit our Twitter account"
+          >
             {twitterSVG}
           </a>
         </li>
       </SocialIcons>
       <Divider />
-      <FooterNav>
+      <FooterNav aria-label="Footer navigation">
         <FooterNavList>
           {navOptions.map(option => (
             <FooterNavItem key={option.name}>
@@ -212,13 +224,18 @@ export const Footer = () => {
         <p>K:Port® is a trademarked and registered design.</p>
         <p> All rights reserved.</p>
       </Disclaimer>
-      <DevelopedBy href="https://www.hewittstudios.co.uk/" target="_blank">
+      <DevelopedBy
+        href="https://www.hewittstudios.co.uk/"
+        target="_blank"
+        rel="noopener"
+        aria-label="Visit the Hewitt Studios website"
+      >
         {/* <p>Developed by</p> */}
         <StaticImage
           src="../images/content/hewitt-studios-logo.png"
           alt=""
           layout="constrained"
-          width={300}
+          width={250}
         />
       </DevelopedBy>
     </Wrapper>
