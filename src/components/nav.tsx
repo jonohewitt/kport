@@ -1,22 +1,32 @@
 import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
+import { kportLogo } from "../images/svgs/kport-logo"
+import { ContactButton } from "./contactButton"
 
 const NavBar = styled.nav`
-  margin: 45px 30px 45px 0;
+  margin: 30px 30px 40px 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `
 const NavList = styled.ul`
   display: flex;
+  align-items: baseline;
 `
-const NavItem = styled.li``
+const NavItem = styled.li`
+  margin-left: 25px;
+`
 
 const NavLink = styled(Link)`
   font-size: 18px;
-  margin-left: 30px;
   color: ${props => props.theme.text};
   text-decoration: none;
+
+  svg {
+    position: relative;
+    top: 5px;
+  }
 `
 
 export const navOptions = [
@@ -24,7 +34,6 @@ export const navOptions = [
   { name: "Sustainability", link: "/sustainability" },
   { name: "User Experience", link: "/userexperience" },
   { name: "Smart City", link: "/smartcity" },
-  { name: "Contact", link: "/contact" },
 ]
 
 export const Nav = () => {
@@ -36,9 +45,12 @@ export const Nav = () => {
             <NavLink to={option.link}>{option.name}</NavLink>
           </NavItem>
         ))}
+        <NavItem>
+          <ContactButton />
+        </NavItem>
       </NavList>
 
-      <NavLink to="/">K:Port</NavLink>
+      <NavLink to="/">{kportLogo}</NavLink>
     </NavBar>
   )
 }

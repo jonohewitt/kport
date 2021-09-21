@@ -124,7 +124,7 @@ const IndexPage: FC<PageProps> = () => {
       <Seo title="Home" />
       <figure>
         <StaticImage
-          src="../images/content/blue-sky.jpg"
+          src="../images/content/kport-bluesky.jpg"
           alt=""
           loading="eager"
           layout="fullWidth"
@@ -152,14 +152,18 @@ const IndexPage: FC<PageProps> = () => {
         <ContactButton />
       </Header>
       <figure>
-        <StaticImage src="../images/content/concept.jpg" alt="" layout="fullWidth" />
+        <StaticImage
+          src="../images/content/kport-concept.jpg"
+          alt=""
+          layout="fullWidth"
+        />
         <FullWidthCaption>Concept image</FullWidthCaption>
       </figure>
       <Features>
         <Concept side="left" aspect="portrait">
           <figure>
             <StaticImage
-              src="../images/content/komorebi.jpg"
+              src="../images/content/kport-komorebi.jpg"
               alt=""
               layout="constrained"
             />
@@ -199,7 +203,7 @@ const IndexPage: FC<PageProps> = () => {
           </FeatureText>
           <figure>
             <StaticImage
-              src="../images/content/sustainability.jpg"
+              src="../images/content/kport-rainchains.jpg"
               alt=""
               layout="constrained"
             />
@@ -213,7 +217,7 @@ const IndexPage: FC<PageProps> = () => {
         <Experience side="left">
           <figure>
             <StaticImage
-              src="../images/content/experience.jpg"
+              src="../images/content/kport-night.jpg"
               alt=""
               layout="constrained"
             />
@@ -277,7 +281,11 @@ const IndexPage: FC<PageProps> = () => {
         </SmartCity>
       </Features>
       <figure>
-        <StaticImage src="../images/content/drone.jpg" alt="" layout="fullWidth" />
+        <StaticImage
+          src="../images/content/kport-drone.jpg"
+          alt=""
+          layout="fullWidth"
+        />
         <FullWidthCaption>
           <span className="bold">Client:</span> North Somerset Council -
           Portishead Marina
@@ -300,7 +308,11 @@ const IndexPage: FC<PageProps> = () => {
         <ContactButton />
       </TextSection>
       <figure>
-        <StaticImage src="../images/content/2cv.jpg" alt="" layout="fullWidth" />
+        <StaticImage
+          src="../images/content/kport-2cv.jpg"
+          alt=""
+          layout="fullWidth"
+        />
         <FullWidthCaption>Development model</FullWidthCaption>
       </figure>
       <TextSection>

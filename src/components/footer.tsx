@@ -1,4 +1,5 @@
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
 import { ContactButton } from "./contactButton"
@@ -59,6 +60,17 @@ const SocialIcons = styled.ul`
   li {
     margin-right: 28px;
   }
+`
+
+const DevelopedBy = styled.a`
+  position: absolute;
+  bottom: 38px;
+  right: 30px;
+
+  /* p {
+    text-align: right;
+    margin-right: 10px;
+  } */
 `
 
 const linkedInSVG = (
@@ -149,6 +161,15 @@ export const Footer = () => {
         <p>K:Port® is a trademarked and registered design.</p>
         <p> All rights reserved.</p>
       </Disclaimer>
+      <DevelopedBy href="https://www.hewittstudios.co.uk/" target="_blank">
+        {/* <p>Developed by</p> */}
+        <StaticImage
+          src="../images/content/hewitt-studios-logo.png"
+          alt=""
+          layout="constrained"
+          width={300}
+        />
+      </DevelopedBy>
     </Wrapper>
   )
 }
