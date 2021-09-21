@@ -43,8 +43,19 @@ const FooterNavItem = styled.li``
 const FooterNavLink = styled(Link)`
   font-size: 22px;
   text-decoration: none;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   display: inline-block;
+
+  svg {
+    transition: opacity 0.2s;
+    opacity: 0;
+  }
+
+  :hover {
+    svg {
+      opacity: 1;
+    }
+  }
 `
 
 const Disclaimer = styled.div`
@@ -126,6 +137,23 @@ const twitterSVG = (
   </svg>
 )
 
+const upArrowSVG = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <polyline points="10 9 15 4 20 9"></polyline>
+    <path d="M4 20h7a4 4 0 0 0 4-4V4"></path>
+  </svg>
+)
+
 export const Footer = () => {
   return (
     <Wrapper>
@@ -154,7 +182,9 @@ export const Footer = () => {
         <FooterNavList>
           {navOptions.map(option => (
             <FooterNavItem key={option.name}>
-              <FooterNavLink to={option.link}>{option.name}</FooterNavLink>
+              <FooterNavLink to={option.link}>
+                {option.name} {upArrowSVG}
+              </FooterNavLink>
             </FooterNavItem>
           ))}
         </FooterNavList>
