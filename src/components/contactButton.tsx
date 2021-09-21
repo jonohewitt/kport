@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
-export const ContactWrapper = styled(Link)`
+export const ContactWrapper = styled.a`
   text-decoration: none;
   font-size: 20px;
   border-radius: 8px;
@@ -22,5 +22,11 @@ export const ContactWrapper = styled(Link)`
 `
 
 export const ContactButton = () => (
-  <ContactWrapper to="/contact">Contact Us</ContactWrapper>
+  <ContactWrapper
+    href="mailto:mail@hewittstudios.co.uk?subject=K:Port"
+    target="_blank"
+    rel="noopener"
+  >
+    Contact Us
+  </ContactWrapper>
 )
