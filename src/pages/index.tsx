@@ -256,7 +256,7 @@ const IndexPage: FC<PageProps> = () => {
           </FeatureText>
           <figure>
             <StaticImage
-              src="../images/content/energy.jpg"
+              src="../images/content/kport-in-use.jpg"
               alt=""
               layout="constrained"
             />
