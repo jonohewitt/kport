@@ -59,7 +59,9 @@ const FooterNavLink = styled(Link)`
 `
 
 const Disclaimer = styled.div`
-  width: 40%;
+  @media (min-width: 850px) {
+    width: 40%;
+  }
   p {
     margin-top: 20px;
     line-height: 1.4;
@@ -67,14 +69,19 @@ const Disclaimer = styled.div`
 `
 
 const Divider = styled.hr`
-  width: 25%;
+  @media (min-width: 850px) {
+    width: 25%;
+  }
   margin: 20px 0 30px 0;
 `
 
 const SocialIcons = styled.ul`
-  position: absolute;
-  top: 60px;
-  right: 20px;
+  @media (min-width: 850px) {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+  }
+
   display: flex;
   li {
     margin-right: 28px;
@@ -82,9 +89,15 @@ const SocialIcons = styled.ul`
 `
 
 const DevelopedBy = styled.a`
-  position: absolute;
-  bottom: 38px;
-  right: 30px;
+  position: relative;
+  display: block;
+  right: 10px;
+  margin-top: 30px;
+  @media (min-width: 850px) {
+    position: absolute;
+    bottom: 38px;
+    right: 30px;
+  }
 
   /* p {
     text-align: right;

@@ -87,11 +87,11 @@ const FeatureSection = styled.section<{ side?: string; aspect?: string }>`
       if (props.side === "left") {
         if (props.aspect === "portrait") {
           return "text-align: start;"
-        } else return "position: absolute; left: 20px; text-align: start;"
+        } else return "margin-left: 20px; text-align: start;"
       } else {
         if (props.aspect === "portrait") {
           return "text-align: end;"
-        } else return "position: absolute; right: 20px; text-align: end;"
+        } else return "margin-right: 20px; text-align: end;"
       }
     }}
   }
@@ -130,7 +130,7 @@ const IndexPage: FC<PageProps> = () => {
           loading="eager"
           layout="fullWidth"
           imgStyle={{ objectFit: "cover" }}
-          style={{ maxHeight: "45vh" }}
+          style={{ maxHeight: "55vh" }}
         />
         <FullWidthCaption>
           <span className="bold">Client:</span> Transport for London - Woolwich,

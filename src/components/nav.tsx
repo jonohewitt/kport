@@ -2,33 +2,42 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { kportLogo } from "../images/svgs/kport-logo"
-import { ContactButton } from "./contactButton"
+import { ContactButton, ContactWrapper } from "./contactButton"
 
 const NavBar = styled.nav`
-  padding: 30px 30px 40px 0;
+  padding: 15px 25px 25px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: var(--nav);
 `
 
-const NavItem = styled.li`
+const NavItem = styled.li<{ hideable?: boolean }>`
   margin-left: 25px;
+  @media (max-width: 850px) {
+    ${props => props.hideable && "display: none;"}
+  }
 `
 
 const NavLink = styled(Link)`
-  font-size: 18px;
+  font-size: 17px;
   color: ${props => props.theme.text};
   text-decoration: none;
 
   svg {
     position: relative;
     top: 5px;
+    margin-left: 25px;
   }
 `
 
 const NavList = styled.ul`
   display: flex;
   align-items: baseline;
+
+  ${ContactWrapper} {
+    font-size: 17px;
+  }
 
   ${NavLink} {
     padding-bottom: 7px;
@@ -48,18 +57,18 @@ export const navOptions = [
 export const Nav = () => {
   return (
     <NavBar>
+      <NavLink to="/">{kportLogo}</NavLink>
       <NavList>
         {navOptions.map(option => (
-          <NavItem key={option.name}>
+          <NavItem hideable key={option.name}>
             <NavLink to={option.link}>{option.name}</NavLink>
           </NavItem>
         ))}
+
         <NavItem>
           <ContactButton />
         </NavItem>
       </NavList>
-
-      <NavLink to="/">{kportLogo}</NavLink>
     </NavBar>
   )
 }
