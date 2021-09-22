@@ -372,7 +372,7 @@ const IndexPage: FC<PageProps> = () => {
           K:Port® is underpinned by a full range of urban design and
           architectural consultancy services offered by Hewitt Studios LLP.
           These include business planning, research and feasibility studies,
-          site selection, planning, building control, public consultation,
+          site selection, building control, public consultation,
           regulatory approvals, passivhaus certified design, project management
           and procurement.
         </p>
