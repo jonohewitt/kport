@@ -37,6 +37,7 @@ const NavList = styled.ul`
 
   ${ContactWrapper} {
     font-size: 17px;
+    line-height: 1 !important;
   }
 
   ${NavLink} {
@@ -48,10 +49,10 @@ const NavList = styled.ul`
 `
 
 export const navOptions = [
-  { name: "Concept", link: "#concept" },
-  { name: "Sustainability", link: "#sustainability" },
-  { name: "User Experience", link: "#experience" },
-  { name: "Smart City", link: "#smartcity" },
+  { name: "Concept", link: "/#concept" },
+  { name: "Sustainability", link: "/#sustainability" },
+  { name: "User Experience", link: "/#experience" },
+  { name: "Smart City", link: "/#smartcity" },
 ]
 
 export const Nav = () => {

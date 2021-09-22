@@ -236,6 +236,7 @@ export const Footer = () => {
           alt=""
           layout="constrained"
           width={250}
+          loading="eager"
         />
       </DevelopedBy>
     </Wrapper>

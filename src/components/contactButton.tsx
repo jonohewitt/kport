@@ -11,6 +11,7 @@ export const ContactWrapper = styled.a`
   margin-top: 10px;
   display: inline-block;
   color: ${props => props.theme.text};
+  line-height: 1.2;
 
   transition: 0.2s;
 

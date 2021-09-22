@@ -19,6 +19,18 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 500;
   }
 
+  p, h2 {
+    a {
+    color: var(--text);
+    border-bottom: 1px solid var(--text);
+    text-decoration: none;
+
+    :hover {
+      border-bottom: 2px solid var(--text);
+    }
+  }
+  }
+
   .screen-reader-only {
     clip: rect(1px, 1px, 1px, 1px);
     clip-path: inset(50%);

@@ -7,6 +7,22 @@ import { StaticImage } from "gatsby-plugin-image"
 import { ContactButton } from "../components/contactButton"
 import { Partners } from "../components/partners"
 
+const rightArrowSVG = (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <line x1="5" y1="12" x2="19" y2="12"></line>
+    <polyline points="12 5 19 12 12 19"></polyline>
+  </svg>
+)
+
 const Caption = styled.figcaption<{ side?: string }>`
   margin: 10px 0;
   font-size: 12px;
@@ -48,6 +64,32 @@ const TextSection = styled.section`
   p {
     font-size: 18px;
     margin-bottom: 24px;
+  }
+`
+
+const ArrowLink = styled.a`
+  font-size: 16px;
+  border-bottom: none;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  span {
+    border-bottom: 1px solid var(--text);
+  }
+  svg {
+    position: relative;
+    top: 3px;
+    left: 0;
+    transition: 0.2s;
+  }
+
+  :hover {
+    span {
+      border-bottom: 2px solid var(--text);
+    }
+    svg {
+      left: 6px;
+    }
   }
 `
 
@@ -166,6 +208,7 @@ const IndexPage: FC<PageProps> = () => {
               src="../images/content/kport-komorebi.jpg"
               alt="Shadows and light shining through photovoltaic panels onto the K:Port timber lattice structure."
               layout="constrained"
+              breakpoints={[300, 400, 600, 750, 1080]}
             />
             <Caption side="left">
               <span className="bold">Client:</span> North Somerset Council -
@@ -267,6 +310,7 @@ const IndexPage: FC<PageProps> = () => {
           </figure>
         </SmartCity>
       </Features>
+
       <figure>
         <StaticImage
           src="../images/content/kport-drone.jpg"
@@ -278,6 +322,7 @@ const IndexPage: FC<PageProps> = () => {
           Portishead Marina
         </FullWidthCaption>
       </figure>
+
       <TextSection>
         <h2>
           K:Port® is capable of rapid implementation, with an established supply
@@ -285,7 +330,7 @@ const IndexPage: FC<PageProps> = () => {
           constructed in 3 weeks.
         </h2>
         <p>
-          Hewitt Studios have a developed kit of parts available to fit any
+          Hewitt Studios LLP have a developed kit of parts available to fit any
           site, with significant economies of scale to be achieved for large
           role outs. K:Port® is cheap and easy to maintain and at the end of its
           life, the timber frame has been designed to be re-locatable and
@@ -294,6 +339,7 @@ const IndexPage: FC<PageProps> = () => {
         </p>
         <ContactButton />
       </TextSection>
+
       <figure>
         <StaticImage
           src="../images/content/kport-2cv.jpg"
@@ -311,10 +357,16 @@ const IndexPage: FC<PageProps> = () => {
         <p>
           Hewitt Studios LLP have determinedly pursued an accessible and
           design-led approach to sustainable architecture, placing environmental
-          technologies fundamentally at the heart of each of our projects. Our
-          work has been internationally recognised and we were named the UK’s
-          “Sustainable Architect of the Year” in 2014 for our pioneering work
-          across the sector.
+          technologies fundamentally at the heart of each of our projects.{" "}
+          <a
+            href="https://www.hewittstudios.co.uk/awards/"
+            target="_blank"
+            rel="noopener"
+          >
+            Our work has been internationally recognised
+          </a>{" "}
+          and we were named the UK’s “Sustainable Architect of the Year” in 2014
+          for our pioneering work across the sector.
         </p>
         <p>
           K:Port® is underpinned by a full range of urban design and
@@ -324,6 +376,19 @@ const IndexPage: FC<PageProps> = () => {
           regulatory approvals, passivhaus certified design, project management
           and procurement.
         </p>
+
+        <ArrowLink
+          href="https://www.hewittstudios.co.uk/"
+          target="_blank"
+          rel="noopener"
+          className="text-link"
+        >
+          <span>
+            Visit the Hewitt Studios LLP website to learn more about our
+            practice
+          </span>{" "}
+          {rightArrowSVG}
+        </ArrowLink>
 
         {/* <Partners /> */}
       </TextSection>
