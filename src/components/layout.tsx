@@ -36,7 +36,7 @@ const Content = styled.main`
   margin: 0 auto;
   /* width: 90%;
   max-width: 800px; */
-  padding-bottom: 100px;
+  /* padding-bottom: 50px; */
 `
 
 const Page = styled.div`

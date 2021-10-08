@@ -5,11 +5,14 @@ import styled from "styled-components"
 import { ContactButton, ContactWrapper } from "./contactButton"
 import { navOptions } from "./nav"
 
+const Container = styled.div`
+  width: 90%;
+  margin: 0 auto;
+`
+
 const Wrapper = styled.footer`
-  /* width: 100%; */
-  /* height: 200px; */
   position: relative;
-  padding: 50px;
+  padding: 40px 0;
   background: var(--footer);
   color: var(--footerText);
 
@@ -59,12 +62,17 @@ const FooterNavLink = styled(Link)`
 `
 
 const Disclaimer = styled.div`
-  @media (min-width: 850px) {
-    width: 40%;
+  @media (min-width: 650px) {
+    width: 50%;
   }
   p {
     margin-top: 20px;
     line-height: 1.4;
+    font-size: 14px;
+  }
+
+  .no-break {
+    white-space: nowrap;
   }
 `
 
@@ -95,7 +103,7 @@ const DevelopedBy = styled.a`
   margin-top: 30px;
   @media (min-width: 850px) {
     position: absolute;
-    bottom: 38px;
+    bottom: 28px;
     right: 30px;
   }
 
@@ -170,75 +178,78 @@ const upArrowSVG = (
 export const Footer = () => {
   return (
     <Wrapper>
-      <SocialIcons>
-        <li>
-          <a
-            href="https://www.linkedin.com/company/hewitt-studios"
-            target="_blank"
-            rel="noopener"
-            aria-label="Visit our LinkedIn account"
-          >
-            {linkedInSVG}
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.instagram.com/hewittstudios/"
-            target="_blank"
-            rel="noopener"
-            aria-label="Visit our Instagram account"
-          >
-            {instaSVG}
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://www.twitter.com/hewittstudios"
-            target="_blank"
-            rel="noopener"
-            aria-label="Visit our Twitter account"
-          >
-            {twitterSVG}
-          </a>
-        </li>
-      </SocialIcons>
-      <Divider />
-      <FooterNav aria-label="Footer navigation">
-        <FooterNavList>
-          {navOptions.map(option => (
-            <FooterNavItem key={option.name}>
-              <FooterNavLink to={option.link}>
-                {option.name} {upArrowSVG}
-              </FooterNavLink>
-            </FooterNavItem>
-          ))}
-        </FooterNavList>
-        <ContactButton />
-      </FooterNav>
-      <Disclaimer>
-        <p>
-          The K:Port® concept and design as well as all website contents,
-          including images, are copyright of © Hewitt Studios LLP, 2014-
-          {new Date().getFullYear()}.
-        </p>
-        <p>K:Port® is a trademarked and registered design.</p>
-        <p> All rights reserved.</p>
-      </Disclaimer>
-      <DevelopedBy
-        href="https://www.hewittstudios.co.uk/"
-        target="_blank"
-        rel="noopener"
-        aria-label="Visit the Hewitt Studios website"
-      >
-        {/* <p>Developed by</p> */}
-        <StaticImage
-          src="../images/content/hewitt-studios-logo.png"
-          alt=""
-          layout="constrained"
-          width={250}
-          loading="eager"
-        />
-      </DevelopedBy>
+      <Container>
+        <SocialIcons>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/hewitt-studios"
+              target="_blank"
+              rel="noopener"
+              aria-label="Visit our LinkedIn account"
+            >
+              {linkedInSVG}
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/hewittstudios/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Visit our Instagram account"
+            >
+              {instaSVG}
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.twitter.com/hewittstudios"
+              target="_blank"
+              rel="noopener"
+              aria-label="Visit our Twitter account"
+            >
+              {twitterSVG}
+            </a>
+          </li>
+        </SocialIcons>
+        <Divider />
+        <FooterNav aria-label="Footer navigation">
+          <FooterNavList>
+            {navOptions.map(option => (
+              <FooterNavItem key={option.name}>
+                <FooterNavLink to={option.link}>
+                  {option.name} {upArrowSVG}
+                </FooterNavLink>
+              </FooterNavItem>
+            ))}
+          </FooterNavList>
+          <ContactButton />
+        </FooterNav>
+        <Disclaimer>
+          <p>
+            The K:Port® concept and design as well as all website contents,
+            including images, are copyright of ©{" "}
+            <span className="no-break">Hewitt Studios LLP</span>, 2014-
+            {new Date().getFullYear()}.
+          </p>
+          <p>K:Port® is a trademarked and registered design.</p>
+          <p> All rights reserved.</p>
+        </Disclaimer>
+        <DevelopedBy
+          href="https://www.hewittstudios.co.uk/"
+          target="_blank"
+          rel="noopener"
+          aria-label="Visit the Hewitt Studios website"
+        >
+          {/* <p>Developed by</p> */}
+          <StaticImage
+            src="../images/content/hewitt-studios-logo.png"
+            alt=""
+            layout="constrained"
+            width={250}
+            loading="eager"
+          />
+        </DevelopedBy>
+      </Container>
     </Wrapper>
   )
 }
