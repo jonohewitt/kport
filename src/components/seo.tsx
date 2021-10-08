@@ -36,6 +36,7 @@ export const Seo: FC<Seo> = ({
             title
             description
             author
+            siteURL
           }
         }
       }
@@ -44,6 +45,7 @@ export const Seo: FC<Seo> = ({
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
+  const siteURL = site.siteURL
 
   return (
     <Helmet
@@ -68,7 +70,7 @@ export const Seo: FC<Seo> = ({
         },
         {
           property: `og:url`,
-          content: "https://kport.co.uk",
+          content: siteURL,
         },
         {
           property: `og:description`,
