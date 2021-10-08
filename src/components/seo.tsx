@@ -59,11 +59,16 @@ export const Seo: FC<Seo> = ({
         },
         {
           property: `og:title`,
-          content: title,
+          // content: `${title}`,
+          content: `K:Port - Low carbon, multi-modal transport hub by Hewitt Studios LLP`,
         },
         {
           property: `og:image`,
           content: "https://kport.co.uk/images/KPortOG.jpg",
+        },
+        {
+          property: `og:url`,
+          content: "https://kport.co.uk",
         },
         {
           property: `og:description`,
