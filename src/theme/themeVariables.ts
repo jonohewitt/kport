@@ -15,7 +15,7 @@ export const darkTheme: Theme = {
   nav: "#1B1C22",
   background: "#272830",
   feature: "#191a20",
-  footer: "#121316",
+  footer: "#0A0A0C",
   footerText: "#ececec",
   highlight: "#bd6b88",
 }
