@@ -198,6 +198,7 @@ const IndexPage: FC<PageProps> = () => {
           src="../images/content/kport-concept.jpg"
           alt="Computer rendered graphic of a K:Port concept including community spaces"
           layout="fullWidth"
+          placeholder="blurred"
         />
         <FullWidthCaption>Concept image</FullWidthCaption>
       </figure>
@@ -209,6 +210,7 @@ const IndexPage: FC<PageProps> = () => {
               alt="Shadows and light shining through photovoltaic panels onto the K:Port timber lattice structure."
               layout="constrained"
               breakpoints={[300, 400, 600, 750, 1080]}
+              placeholder="blurred"
             />
             <Caption side="left">
               <span className="bold">Client:</span> North Somerset Council -
@@ -247,6 +249,8 @@ const IndexPage: FC<PageProps> = () => {
               src="../images/content/kport-rainchains.jpg"
               alt="Detail of the chains used to facilitate rain water drainage from the roof panels"
               layout="constrained"
+              backgroundColor="#99B27F"
+              placeholder="blurred"
             />
             <Caption side="left">
               <span className="bold">Client:</span> Transport for London -
@@ -261,6 +265,8 @@ const IndexPage: FC<PageProps> = () => {
               src="../images/content/kport-night.jpg"
               alt="K:Port shown at night with LED strip lighting providing a safe environment"
               layout="constrained"
+              backgroundColor="#1580DA"
+              placeholder="blurred"
             />
             <Caption side="left">
               <span className="bold">Client:</span> Transport for London -
@@ -302,6 +308,8 @@ const IndexPage: FC<PageProps> = () => {
               src="../images/content/kport-in-use.jpg"
               alt="A man demonstrates K:Port in use by charging a Tesla electric car under the canopy"
               layout="constrained"
+              backgroundColor="#E3A473"
+              placeholder="blurred"
             />
             <Caption side="left">
               <span className="bold">Client:</span> Transport for London -
