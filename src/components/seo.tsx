@@ -59,6 +59,9 @@ export const Seo: FC<Seo> = ({
           name: `description`,
           content: metaDescription,
         },
+
+        // OPEN GRAPH
+
         {
           property: `og:title`,
           // content: `${title}`,
@@ -67,6 +70,11 @@ export const Seo: FC<Seo> = ({
         {
           property: `og:image`,
           content: "https://kport.co.uk/images/KPortOG.jpg",
+        },
+        {
+          property: `og:image:alt`,
+          content:
+            "K:Port timber structure, ingtegrated lighting and photovoltaic roof panels",
         },
         {
           property: `og:url`,
@@ -81,16 +89,32 @@ export const Seo: FC<Seo> = ({
           content: `website`,
         },
         {
+          property: `og:locale`,
+          content: `en_GB`,
+        },
+
+        // TWITTER
+
+        {
           name: `twitter:card`,
           content: `summary_large_image`,
+        },
+        {
+          property: `twitter:site`,
+          content: "@hewittstudios",
+        },
+        {
+          property: `twitter:creator`,
+          content: "@hewittstudios",
         },
         {
           property: `twitter:image`,
           content: "https://kport.co.uk/images/KPortOG.jpg",
         },
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata?.author || ``,
+          property: `twitter:image:alt`,
+          content:
+            "K:Port timber structure, ingtegrated lighting and photovoltaic roof panels",
         },
         {
           name: `twitter:title`,
@@ -101,6 +125,9 @@ export const Seo: FC<Seo> = ({
           name: `twitter:description`,
           content: metaDescription,
         },
+
+        // SAFARI
+
         {
           name: "theme-color",
           content: `${lightTheme.nav}`,
