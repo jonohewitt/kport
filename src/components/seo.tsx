@@ -1,6 +1,7 @@
 import React, { FC } from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { darkTheme, lightTheme } from "../theme/themeVariables"
 
 interface PropertyMetaObj {
   property: string
@@ -61,6 +62,10 @@ export const Seo: FC<Seo> = ({
           content: title,
         },
         {
+          property: `og:image`,
+          content: "https://kport.co.uk/images/KPortOG.jpg",
+        },
+        {
           property: `og:description`,
           content: metaDescription,
         },
@@ -70,7 +75,11 @@ export const Seo: FC<Seo> = ({
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
+        },
+        {
+          property: `twitter:image`,
+          content: "https://kport.co.uk/images/KPortOG.jpg",
         },
         {
           name: `twitter:creator`,
@@ -83,6 +92,16 @@ export const Seo: FC<Seo> = ({
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: "theme-color",
+          content: `${lightTheme.nav}`,
+          media: "(prefers-color-scheme: light)",
+        },
+        {
+          name: "theme-color",
+          content: `${darkTheme.nav}`,
+          media: "(prefers-color-scheme: dark)",
         },
       ].concat(meta)}
     />
