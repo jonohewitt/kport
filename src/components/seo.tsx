@@ -60,7 +60,7 @@ export const Seo: FC<Seo> = ({
         {
           property: `og:title`,
           // content: `${title}`,
-          content: `K:Port - Low carbon, multi-modal transport hub by Hewitt Studios LLP`,
+          content: `K:Port - Low carbon, multi-modal transport hub`,
         },
         {
           property: `og:image`,
@@ -93,7 +93,7 @@ export const Seo: FC<Seo> = ({
         {
           name: `twitter:title`,
           // content: `${title}`,
-          content: `K:Port - Low carbon, multi-modal transport hub by Hewitt Studios LLP`,
+          content: `K:Port - Low carbon, multi-modal transport hub`,
         },
         {
           name: `twitter:description`,
