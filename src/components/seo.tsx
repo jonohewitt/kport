@@ -45,7 +45,7 @@ export const Seo: FC<Seo> = ({
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
-  const siteURL = site.siteURL
+  const siteURL = site.siteMetadata.siteURL
 
   return (
     <Helmet
