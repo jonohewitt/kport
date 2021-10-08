@@ -62,7 +62,7 @@ const config: GatsbyConfig = {
         background_color: `#fff`,
         theme_color: `#fff`,
         display: `standalone`,
-        icon: `src/images/icon/icon.png`,
+        icon: `src/images/icon/k-icon.png`,
         theme_color_in_head: false, // This will avoid adding theme-color meta tag.
       },
     },
