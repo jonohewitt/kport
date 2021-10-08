@@ -1,7 +1,7 @@
 import React from "react"
-import { darkTheme, lightTheme } from "../src/theme/themeVariables"
-import { Layout } from "../src/components/layout"
-import { GlobalProvider } from "../src/context/globalState"
+import { darkTheme, lightTheme } from "./src/theme/themeVariables"
+import { Layout } from "./src/components/layout"
+import { GlobalProvider } from "./src/context/globalState"
 
 // Unfortunately this extremely hacky work around seems to be the only way
 // to load in dark mode without flickering from light mode first
