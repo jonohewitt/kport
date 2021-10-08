@@ -159,7 +159,7 @@ const SmartCity = styled(FeatureSection)`
 `
 
 const IndexPage: FC<PageProps> = () => {
-  const { dispatch } = useGlobalState()
+  // const { dispatch } = useGlobalState()
 
   return (
     <>
@@ -372,9 +372,9 @@ const IndexPage: FC<PageProps> = () => {
           K:Port® is underpinned by a full range of urban design and
           architectural consultancy services offered by Hewitt Studios LLP.
           These include business planning, research and feasibility studies,
-          site selection, building control, public consultation,
-          regulatory approvals, passivhaus certified design, project management
-          and procurement.
+          site selection, building control, public consultation, regulatory
+          approvals, passivhaus certified design, project management and
+          procurement.
         </p>
 
         <ArrowLink
@@ -389,21 +389,16 @@ const IndexPage: FC<PageProps> = () => {
           </span>{" "}
           {rightArrowSVG}
         </ArrowLink>
-
-        {/* <Partners /> */}
       </TextSection>
+      <Partners />
 
-      {/* <p>Welcome to your new Gatsby site.</p>
-      <p>Now go build something great.</p>
+      {/* 
       <button onClick={() => dispatch({ type: "setTheme", payload: "dark" })}>
         Switch to dark
       </button>
       <button onClick={() => dispatch({ type: "setTheme", payload: "light" })}>
         Switch to light
-      </button>
-      <p>
-        <Link to="/page-2/">Go to page 2</Link>
-      </p> */}
+      </button>*/}
     </>
   )
 }
