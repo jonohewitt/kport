@@ -95,6 +95,11 @@ const ArrowLink = styled.a`
 
 const FeatureText = styled.div<{ side?: string }>`
   padding: ${props => (props.side === "left" ? "0 0 0 10%" : "0 10% 0 0")};
+
+  @media (min-width: 1200px) {
+    padding: 0;
+  }
+
   h2 {
     font-size: 24px;
     font-weight: 500;
@@ -109,7 +114,6 @@ const FeatureText = styled.div<{ side?: string }>`
 `
 
 const FeatureSection = styled.section<{ side?: string; aspect?: string }>`
-  background: ${props => props.theme.feature};
   padding: 30px 0;
   display: grid;
   align-items: center;
@@ -143,7 +147,14 @@ const FeatureSection = styled.section<{ side?: string; aspect?: string }>`
   }
 `
 
-const Features = styled.div``
+const Features = styled.div`
+  background: ${props => props.theme.feature};
+`
+
+const FeatureContainer = styled.div`
+  max-width: 1100px;
+  margin: 0 auto;
+`
 
 const Concept = styled(FeatureSection)``
 const Sustainability = styled(FeatureSection)``
@@ -203,120 +214,123 @@ const IndexPage: FC<PageProps> = () => {
         <FullWidthCaption>Concept image</FullWidthCaption>
       </figure>
       <Features>
-        <Concept id="concept" side="left" aspect="portrait">
-          <figure>
-            <StaticImage
-              src="../images/content/kport-komorebi.jpg"
-              alt="Shadows and light shining through photovoltaic panels onto the K:Port timber lattice structure."
-              layout="constrained"
-              breakpoints={[300, 400, 600, 750, 1080]}
-              placeholder="blurred"
-            />
-            <Caption side="left">
-              <span className="bold">Client:</span> North Somerset Council -
-              Portishead Marina
-            </Caption>
-          </figure>
-          <FeatureText side="right">
-            <h2>Photosynthetic architecture</h2>
-            <p>
-              Our concept for K:Port® derives from the Japanese notion of
-              “Komorebi”; the dappled light which occurs when sunlight shines
-              through the leaves of a tree. The essence of the tree is apparent
-              throughout K:Port®, from the form of the canopy itself and the
-              timbers which make up its structure, to the collection and use of
-              rainwater and sunlight via the solar PV surface.
-            </p>
-          </FeatureText>
-        </Concept>
+        <FeatureContainer>
+          <Concept id="concept" side="left" aspect="portrait">
+            <figure>
+              <StaticImage
+                src="../images/content/kport-komorebi.jpg"
+                alt="Shadows and light shining through photovoltaic panels onto the K:Port timber lattice structure."
+                layout="constrained"
+                placeholder="blurred"
+                width={500}
+              />
+              <Caption side="left">
+                <span className="bold">Client:</span> North Somerset Council -
+                Portishead Marina
+              </Caption>
+            </figure>
+            <FeatureText side="right">
+              <h2>Photosynthetic architecture</h2>
+              <p>
+                Our concept for K:Port® derives from the Japanese notion of
+                “Komorebi”; the dappled light which occurs when sunlight shines
+                through the leaves of a tree. The essence of the tree is
+                apparent throughout K:Port®, from the form of the canopy itself
+                and the timbers which make up its structure, to the collection
+                and use of rainwater and sunlight via the solar PV surface.
+              </p>
+            </FeatureText>
+          </Concept>
 
-        <Sustainability id="sustainability">
-          <FeatureText side="left">
-            <h2>Sustainability at its core</h2>
-            <p>
-              K:Port® is resource efficient, with a carbon-sequestering,
-              responsibly sourced timber structure and options for rainwater
-              harvesting, sustainable drainage and net-gain biodiversity.
-            </p>
-            <p>
-              It is energy efficient, with integrated energy generation from the
-              solar PV canopy and can be upgraded with battery storage and smart
-              charging.
-            </p>
-          </FeatureText>
-          <figure>
-            <StaticImage
-              src="../images/content/kport-rainchains.jpg"
-              alt="Detail of the chains used to facilitate rain water drainage from the roof panels"
-              layout="constrained"
-              backgroundColor="#99B27F"
-              placeholder="blurred"
-            />
-            <Caption side="left">
-              <span className="bold">Client:</span> Transport for London -
-              Woolwich, London
-            </Caption>
-          </figure>
-        </Sustainability>
+          <Sustainability id="sustainability">
+            <FeatureText side="left">
+              <h2>Sustainability at its core</h2>
+              <p>
+                K:Port® is resource efficient, with a carbon-sequestering,
+                responsibly sourced timber structure and options for rainwater
+                harvesting, sustainable drainage and net-gain biodiversity.
+              </p>
+              <p>
+                It is energy efficient, with integrated energy generation from
+                the solar PV canopy and can be upgraded with battery storage and
+                smart charging.
+              </p>
+            </FeatureText>
+            <figure>
+              <StaticImage
+                src="../images/content/kport-rainchains.jpg"
+                alt="Detail of the chains used to facilitate rain water drainage from the roof panels"
+                layout="constrained"
+                placeholder="blurred"
+                width={500}
+              />
+              <Caption side="left">
+                <span className="bold">Client:</span> Transport for London -
+                Woolwich, London
+              </Caption>
+            </figure>
+          </Sustainability>
 
-        <Experience id="experience" side="left">
-          <figure>
-            <StaticImage
-              src="../images/content/kport-night.jpg"
-              alt="K:Port shown at night with LED strip lighting providing a safe environment"
-              layout="constrained"
-              backgroundColor="#1580DA"
-              placeholder="blurred"
-            />
-            <Caption side="left">
-              <span className="bold">Client:</span> Transport for London -
-              Woolwich, London
-            </Caption>
-          </figure>
-          <FeatureText side="right">
-            <h2>Easy, enjoyable and safe to use</h2>
-            <p>
-              K:Port® provides sheltered charging for EVs, e-bikes and
-              e-scooters, keeping equipment dry and cool. Spaces are fully
-              accessible and charge points are impact protected.
-            </p>
-            <p>
-              This high-quality environment can be made available 24/7 via the
-              incorporation of integrated LED lighting, CCTV, motion sensing and
-              EV bay detection.
-            </p>
-          </FeatureText>
-        </Experience>
+          <Experience id="experience" side="left">
+            <figure>
+              <StaticImage
+                src="../images/content/kport-night.jpg"
+                alt="K:Port shown at night with LED strip lighting providing a safe environment"
+                layout="constrained"
+                placeholder="blurred"
+                width={500}
+              />
+              <Caption side="left">
+                <span className="bold">Client:</span> Transport for London -
+                Woolwich, London
+              </Caption>
+            </figure>
+            <FeatureText side="right">
+              <h2>Easy, enjoyable and safe to use</h2>
+              <p>
+                K:Port® provides sheltered charging for EVs, e-bikes and
+                e-scooters, keeping equipment dry and cool. Spaces are fully
+                accessible and charge points are impact protected.
+              </p>
+              <p>
+                This high-quality environment can be made available 24/7 via the
+                incorporation of integrated LED lighting, CCTV, motion sensing
+                and EV bay detection.
+              </p>
+            </FeatureText>
+          </Experience>
 
-        <SmartCity id="smartcity">
-          <FeatureText side="left">
-            <h2>Smart City enabled</h2>
-            <p>
-              K:Port can provide greater energy resilience and autonomy through
-              its ability to generate, store, trade and moderate renewable
-              power. Interaction with electric vehicles is possible through V2G.
-            </p>
+          <SmartCity id="smartcity">
+            <FeatureText side="left">
+              <h2>Smart City enabled</h2>
+              <p>
+                K:Port can provide greater energy resilience and autonomy
+                through its ability to generate, store, trade and moderate
+                renewable power. Interaction with electric vehicles is possible
+                through V2G.
+              </p>
 
-            <p>
-              The result is a significant reduction in energy costs and carbon
-              footprint for the K:Port® operator, as well as the virtual
-              elimination of any energy downtime.
-            </p>
-          </FeatureText>
-          <figure>
-            <StaticImage
-              src="../images/content/kport-in-use.jpg"
-              alt="A man demonstrates K:Port in use by charging a Tesla electric car under the canopy"
-              layout="constrained"
-              backgroundColor="#E3A473"
-              placeholder="blurred"
-            />
-            <Caption side="left">
-              <span className="bold">Client:</span> Transport for London -
-              Woolwich, London
-            </Caption>
-          </figure>
-        </SmartCity>
+              <p>
+                The result is a significant reduction in energy costs and carbon
+                footprint for the K:Port® operator, as well as the virtual
+                elimination of any energy downtime.
+              </p>
+            </FeatureText>
+            <figure>
+              <StaticImage
+                src="../images/content/kport-in-use.jpg"
+                alt="A man demonstrates K:Port in use by charging a Tesla electric car under the canopy"
+                layout="constrained"
+                placeholder="blurred"
+                width={500}
+              />
+              <Caption side="left">
+                <span className="bold">Client:</span> Transport for London -
+                Woolwich, London
+              </Caption>
+            </figure>
+          </SmartCity>
+        </FeatureContainer>
       </Features>
 
       <figure>

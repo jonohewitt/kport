@@ -60,6 +60,7 @@ export const Partners = () => {
           name
           childImageSharp {
             gatsbyImageData(
+              height: 200
               placeholder: NONE
               transformOptions: { grayscale: true }
             )
