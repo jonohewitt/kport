@@ -133,11 +133,13 @@ const FeatureSection = styled.section<{ side?: string; aspect?: string }>`
       if (props.side === "left") {
         if (props.aspect === "portrait") {
           return "text-align: start;"
-        } else return "margin-left: 20px; text-align: start;"
+        } else
+          return "margin-left: 20px; @media(min-width: 1200px){margin-left: 0} text-align: start;"
       } else {
         if (props.aspect === "portrait") {
           return "text-align: end;"
-        } else return "margin-right: 20px; text-align: end;"
+        } else
+          return "margin-right: 20px; @media(min-width: 1200px){margin-right: 0} text-align: end;"
       }
     }}
   }
