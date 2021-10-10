@@ -92,41 +92,48 @@ const ArrowLink = styled.a`
   }
 `
 
+const HeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+`
+
 const IndexPage: FC<PageProps> = () => {
   // const { dispatch } = useGlobalState()
 
   return (
     <>
       <Seo title="Home" />
-
-      <figure>
-        <StaticImage
-          src="../images/content/kport-bluesky.jpg"
-          alt="Detail of the K:Port timber structure with photovoltaic panels casting shadows"
-          loading="eager"
-          layout="fullWidth"
-          imgStyle={{ objectFit: "cover" }}
-          style={{ maxHeight: "55vh" }}
-        />
-        <FullWidthCaption>
-          <span className="bold">Client:</span> North Somerset Council -
-          Portishead Marina
-        </FullWidthCaption>
-      </figure>
-      <Header>
-        <h1>
-          K:Port® is a proven smart city solution, designed to inspire and
-          enable the sustainable electrification of transport.
-        </h1>
-        <p>
-          A low-carbon, multi-modal transport hub, K:Port® has been created by
-          award winning architects Hewitt Studios LLP to democratise e-mobility
-          and inspire behavioural change within local communities. Our solution
-          enables deployment in prominent and sensitive locations, with minimal
-          environmental impact and a secure & flexible long-term legacy.
-        </p>
-        <ContactButton />
-      </Header>
+      <HeaderWrapper>
+        <Header>
+          <h1>
+            K:Port® is a proven smart city solution, designed to inspire and
+            enable the sustainable electrification of transport.
+          </h1>
+          <p>
+            A low-carbon, multi-modal transport hub, K:Port® has been created by
+            award winning architects Hewitt Studios LLP to democratise
+            e-mobility and inspire behavioural change within local communities.
+            Our solution enables deployment in prominent and sensitive
+            locations, with minimal environmental impact and a secure & flexible
+            long-term legacy.
+          </p>
+          <ContactButton />
+        </Header>
+        <figure>
+          <StaticImage
+            src="../images/content/kport-bluesky.jpg"
+            alt="Detail of the K:Port timber structure with photovoltaic panels casting shadows"
+            loading="eager"
+            layout="fullWidth"
+            imgStyle={{ objectFit: "cover" }}
+            style={{ maxHeight: "55vh" }}
+          />
+          <FullWidthCaption>
+            <span className="bold">Client:</span> North Somerset Council -
+            Portishead Marina
+          </FullWidthCaption>
+        </figure>
+      </HeaderWrapper>
       <figure>
         <StaticImage
           src="../images/content/kport-concept.jpg"
