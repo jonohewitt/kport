@@ -106,7 +106,8 @@ const FeatureSection = styled.section<{
     :nth-of-type(2n + 1) {
       ${Caption} {
         text-align: left;
-        ${props => !props.portrait && "margin-left: 20px"}
+        margin-left: 20px;
+        ${props => props.portrait && "margin-left: 0"}
 
         @media (min-width: 1120px) {
           margin-left: 0;
@@ -123,7 +124,8 @@ const FeatureSection = styled.section<{
     :nth-of-type(2n) {
       ${Caption} {
         text-align: right;
-        ${props => !props.portrait && "margin-right: 20px"}
+        margin-right: 20px;
+        ${props => props.portrait && "margin-right: 0"}
         @media (min-width: 1120px) {
           margin-right: 0;
         }
