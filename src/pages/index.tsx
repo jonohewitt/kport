@@ -6,6 +6,7 @@ import { useGlobalState } from "../context/globalState"
 import { StaticImage } from "gatsby-plugin-image"
 import { ContactButton } from "../components/contactButton"
 import { Partners } from "../components/partners"
+import { Features } from "../components/features"
 
 const rightArrowSVG = (
   <svg
@@ -23,12 +24,9 @@ const rightArrowSVG = (
   </svg>
 )
 
-const Caption = styled.figcaption<{ side?: string }>`
+const FullWidthCaption = styled.figcaption<{ side?: string }>`
   margin: 10px 0;
-  font-size: 12px;
-`
-
-const FullWidthCaption = styled(Caption)`
+  font-size: 10px;
   ${props =>
     props.side === "left"
       ? "text-align: start;"
@@ -68,12 +66,13 @@ const TextSection = styled.section`
 `
 
 const ArrowLink = styled.a`
+  display: inline-block;
   font-size: 16px;
   border-bottom: none;
   color: var(--text);
   text-decoration: none;
   font-weight: 500;
-  span {
+  .underline {
     border-bottom: 1px solid var(--text);
   }
   svg {
@@ -84,89 +83,11 @@ const ArrowLink = styled.a`
   }
 
   :hover {
-    span {
+    .underline {
       border-bottom: 2px solid var(--text);
     }
     svg {
       left: 6px;
-    }
-  }
-`
-
-const FeatureText = styled.div<{ side?: string }>`
-  padding: ${props => (props.side === "left" ? "0 0 0 10%" : "0 10% 0 0")};
-
-  @media (min-width: 1200px) {
-    padding: 0;
-  }
-
-  h2 {
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 1.6;
-    margin-bottom: 22px;
-  }
-
-  p {
-    line-height: 1.6;
-    margin-bottom: 22px;
-  }
-`
-
-const FeatureSection = styled.section<{ side?: string; aspect?: string }>`
-  padding: 30px 0;
-  display: grid;
-  align-items: center;
-  grid-gap: 10%;
-  grid-template-columns: 1fr 1fr;
-
-  :first-of-type {
-    padding-top: 110px;
-  }
-
-  :last-of-type {
-    padding-bottom: 110px;
-  }
-
-  ${Caption} {
-    ${props => {
-      if (props.side === "left") {
-        if (props.aspect === "portrait") {
-          return "text-align: start;"
-        } else
-          return "margin-left: 20px; @media(min-width: 1200px){margin-left: 0} text-align: start;"
-      } else {
-        if (props.aspect === "portrait") {
-          return "text-align: end;"
-        } else
-          return "margin-right: 20px; @media(min-width: 1200px){margin-right: 0} text-align: end;"
-      }
-    }}
-  }
-
-  figure {
-    ${props => props.aspect === "portrait" && "margin-left: 10%;"}
-  }
-`
-
-const Features = styled.div`
-  background: ${props => props.theme.feature};
-`
-
-const FeatureContainer = styled.div`
-  max-width: 1100px;
-  margin: 0 auto;
-`
-
-const Concept = styled(FeatureSection)``
-const Sustainability = styled(FeatureSection)``
-const Experience = styled(FeatureSection)``
-const SmartCity = styled(FeatureSection)`
-  ul {
-    list-style: disc;
-    li {
-      line-height: 1.6;
-      margin-bottom: 16px;
     }
   }
 `
@@ -215,125 +136,7 @@ const IndexPage: FC<PageProps> = () => {
         />
         <FullWidthCaption>Concept image</FullWidthCaption>
       </figure>
-      <Features>
-        <FeatureContainer>
-          <Concept id="concept" side="left" aspect="portrait">
-            <figure>
-              <StaticImage
-                src="../images/content/kport-komorebi.jpg"
-                alt="Shadows and light shining through photovoltaic panels onto the K:Port timber lattice structure."
-                layout="constrained"
-                placeholder="blurred"
-                width={500}
-              />
-              <Caption side="left">
-                <span className="bold">Client:</span> North Somerset Council -
-                Portishead Marina
-              </Caption>
-            </figure>
-            <FeatureText side="right">
-              <h2>Photosynthetic architecture</h2>
-              <p>
-                Our concept for K:Port® derives from the Japanese notion of
-                “Komorebi”; the dappled light which occurs when sunlight shines
-                through the leaves of a tree. The essence of the tree is
-                apparent throughout K:Port®, from the form of the canopy itself
-                and the timbers which make up its structure, to the collection
-                and use of rainwater and sunlight via the solar PV surface.
-              </p>
-            </FeatureText>
-          </Concept>
-
-          <Sustainability id="sustainability">
-            <FeatureText side="left">
-              <h2>Sustainability at its core</h2>
-              <p>
-                K:Port® is resource efficient, with a carbon-sequestering,
-                responsibly sourced timber structure and options for rainwater
-                harvesting, sustainable drainage and net-gain biodiversity.
-              </p>
-              <p>
-                It is energy efficient, with integrated energy generation from
-                the solar PV canopy and can be upgraded with battery storage and
-                smart charging.
-              </p>
-            </FeatureText>
-            <figure>
-              <StaticImage
-                src="../images/content/kport-rainchains.jpg"
-                alt="Detail of the chains used to facilitate rain water drainage from the roof panels"
-                layout="constrained"
-                placeholder="blurred"
-                width={500}
-              />
-              <Caption side="left">
-                <span className="bold">Client:</span> Transport for London -
-                Woolwich, London
-              </Caption>
-            </figure>
-          </Sustainability>
-
-          <Experience id="experience" side="left">
-            <figure>
-              <StaticImage
-                src="../images/content/kport-night.jpg"
-                alt="K:Port shown at night with LED strip lighting providing a safe environment"
-                layout="constrained"
-                placeholder="blurred"
-                width={500}
-              />
-              <Caption side="left">
-                <span className="bold">Client:</span> Transport for London -
-                Woolwich, London
-              </Caption>
-            </figure>
-            <FeatureText side="right">
-              <h2>Easy, enjoyable and safe to use</h2>
-              <p>
-                K:Port® provides sheltered charging for EVs, e-bikes and
-                e-scooters, keeping equipment dry and cool. Spaces are fully
-                accessible and charge points are impact protected.
-              </p>
-              <p>
-                This high-quality environment can be made available 24/7 via the
-                incorporation of integrated LED lighting, CCTV, motion sensing
-                and EV bay detection.
-              </p>
-            </FeatureText>
-          </Experience>
-
-          <SmartCity id="smartcity">
-            <FeatureText side="left">
-              <h2>Smart City enabled</h2>
-              <p>
-                K:Port can provide greater energy resilience and autonomy
-                through its ability to generate, store, trade and moderate
-                renewable power. Interaction with electric vehicles is possible
-                through V2G.
-              </p>
-
-              <p>
-                The result is a significant reduction in energy costs and carbon
-                footprint for the K:Port® operator, as well as the virtual
-                elimination of any energy downtime.
-              </p>
-            </FeatureText>
-            <figure>
-              <StaticImage
-                src="../images/content/kport-in-use.jpg"
-                alt="A man demonstrates K:Port in use by charging a Tesla electric car under the canopy"
-                layout="constrained"
-                placeholder="blurred"
-                width={500}
-              />
-              <Caption side="left">
-                <span className="bold">Client:</span> Transport for London -
-                Woolwich, London
-              </Caption>
-            </figure>
-          </SmartCity>
-        </FeatureContainer>
-      </Features>
+      <Features />
 
       <figure>
         <StaticImage
@@ -356,10 +159,13 @@ const IndexPage: FC<PageProps> = () => {
         <p>
           Hewitt Studios LLP have a developed kit of parts available to fit any
           site, with significant economies of scale to be achieved for large
-          role outs. K:Port® is cheap and easy to maintain and at the end of its
-          life, the timber frame has been designed to be re-locatable and
-          re-usable, and ultimately utilised as biomass fuel, ensuring a
-          long-term sustainable legacy.
+          role outs.
+        </p>
+        <p>
+          K:Port® is cheap and easy to maintain and at the end of its life, the
+          timber frame has been designed to be re-locatable and re-usable, and
+          ultimately utilised as biomass fuel, ensuring a long-term sustainable
+          legacy.
         </p>
         <ContactButton />
       </TextSection>
@@ -407,11 +213,10 @@ const IndexPage: FC<PageProps> = () => {
           rel="noopener"
           className="text-link"
         >
-          <span>
-            Visit the Hewitt Studios LLP website to learn more about our
-            practice
-          </span>{" "}
-          {rightArrowSVG}
+          <span className="underline">
+            Visit the Hewitt Studios LLP website to learn more about our{" "}
+            <span className="no-break">practice {rightArrowSVG}</span>
+          </span>
         </ArrowLink>
       </TextSection>
       <Partners />

@@ -38,6 +38,9 @@ const NavList = styled.ul`
   ${ContactWrapper} {
     font-size: 17px;
     line-height: 1 !important;
+    @media (max-width: 600px) {
+      font-size: 14px;
+    }
   }
 
   ${NavLink} {

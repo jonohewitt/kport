@@ -25,7 +25,7 @@ const PartnerList = styled.ul<{ darkMode: boolean }>`
   justify-content: space-around;
   gap: 3vw 5vw;
   background: #fff;
-  padding: 5vw;
+  padding: max(5vw, 30px) 5vw;
   margin: 4vw;
   box-shadow: 0px 4px 20px #0003;
 

@@ -41,4 +41,8 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     position: absolute;
   }
+
+    .no-break {
+    white-space: nowrap;
+  }
 `

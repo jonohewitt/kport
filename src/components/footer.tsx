@@ -70,10 +70,6 @@ const Disclaimer = styled.div`
     line-height: 1.4;
     font-size: 14px;
   }
-
-  .no-break {
-    white-space: nowrap;
-  }
 `
 
 const Divider = styled.hr`
