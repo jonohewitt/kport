@@ -194,6 +194,7 @@ const IndexPage: FC<PageProps> = () => {
             objectPosition: "center center",
             maxWidth: "1000px",
             margin: "0 auto",
+            objectFit: "contain",
           }}
           backgroundColor="#000"
         />
