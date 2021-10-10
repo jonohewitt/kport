@@ -102,7 +102,7 @@ const IndexPage: FC<PageProps> = () => {
 
   return (
     <>
-      <Seo title="Home" />
+      <Seo title="Overview" />
       <HeaderWrapper>
         <Header>
           <h1>
