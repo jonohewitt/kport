@@ -22,13 +22,13 @@ const rightArrowSVG = (
 const Text = styled.header`
   display: grid;
   place-items: stretch center;
+  padding: max(20vh, 100px) 0;
+  max-height: 500px;
   h1 {
-    font-size: 42px;
-    margin-top: 10vh;
+    font-size: 36px;
   }
 
   p {
-    margin-top: 20px;
     font-size: 20px;
   }
 `
@@ -39,7 +39,7 @@ const ArrowLink = styled(Link)`
   color: var(--text);
   text-decoration: none;
   font-weight: 500;
-  margin-top: 20px;
+  padding: 20px;
   span {
     border-bottom: 1px solid var(--text);
   }
@@ -67,7 +67,7 @@ const NotFoundPage: FC<PageProps> = () => (
       <h1>Sorry, this page doesn't exist</h1>
 
       <ArrowLink to="/">
-        <span>Return to the homepage</span> {rightArrowSVG}
+        <span>Return to the overview page</span> {rightArrowSVG}
       </ArrowLink>
     </Text>
   </>
