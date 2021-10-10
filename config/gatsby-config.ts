@@ -34,7 +34,7 @@ const config: GatsbyConfig = {
       },
     },
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-mdx`,
+    // `gatsby-plugin-mdx`,
     // {
     //   resolve: "gatsby-source-filesystem",
     //   options: {
@@ -53,6 +53,7 @@ const config: GatsbyConfig = {
     `gatsby-plugin-gatsby-cloud`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-preact`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
