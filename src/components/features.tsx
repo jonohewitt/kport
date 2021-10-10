@@ -31,9 +31,6 @@ const FeatureWrapper = styled.div`
 const Caption = styled.figcaption`
   margin: 10px 0;
   font-size: 10px;
-  @media (min-width: 700px) {
-    font-size: 12px;
-  }
 `
 
 const FeatureText = styled.div`
@@ -109,9 +106,9 @@ const FeatureSection = styled.section<{
     :nth-of-type(2n + 1) {
       ${Caption} {
         text-align: left;
-        margin-left: 20px;
+        ${props => !props.portrait && "margin-left: 20px"}
 
-        @media (min-width: 1200px) {
+        @media (min-width: 1120px) {
           margin-left: 0;
         }
       }
@@ -126,8 +123,8 @@ const FeatureSection = styled.section<{
     :nth-of-type(2n) {
       ${Caption} {
         text-align: right;
-        margin-right: 20px;
-        @media (min-width: 1200px) {
+        ${props => !props.portrait && "margin-right: 20px"}
+        @media (min-width: 1120px) {
           margin-right: 0;
         }
       }

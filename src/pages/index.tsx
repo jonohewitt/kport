@@ -125,7 +125,6 @@ const IndexPage: FC<PageProps> = () => {
             alt="Detail of the K:Port timber structure with photovoltaic panels casting shadows"
             loading="eager"
             layout="fullWidth"
-            imgStyle={{ objectFit: "cover" }}
             style={{ maxHeight: "55vh" }}
           />
           <FullWidthCaption>
@@ -137,12 +136,15 @@ const IndexPage: FC<PageProps> = () => {
       <figure>
         <StaticImage
           src="../images/content/kport-concept.jpg"
-          alt="Computer rendered graphic of a K:Port concept including community spaces"
+          alt="Rendered graphic of a K:Port concept hub including community spaces"
           layout="fullWidth"
           placeholder="blurred"
+          style={{ minHeight: "30vh", maxHeight: "60vh" }}
+          imgStyle={{ objectPosition: "right 90%" }}
         />
         <FullWidthCaption>Concept image</FullWidthCaption>
       </figure>
+
       <Features />
 
       <figure>
@@ -150,6 +152,8 @@ const IndexPage: FC<PageProps> = () => {
           src="../images/content/kport-drone.jpg"
           alt="Arial view of a single K:port 'tree' structure in the centre of a ringed road"
           layout="fullWidth"
+          style={{ minHeight: "30vh", maxHeight: "60vh" }}
+          imgStyle={{ objectPosition: "center 65%" }}
         />
         <FullWidthCaption>
           <span className="bold">Client:</span> North Somerset Council -
@@ -182,6 +186,16 @@ const IndexPage: FC<PageProps> = () => {
           src="../images/content/kport-2cv.jpg"
           alt="A miniature scaled development model of K:Port with a toy car."
           layout="fullWidth"
+          style={{
+            minHeight: "30vh",
+            maxHeight: "60vh",
+          }}
+          imgStyle={{
+            objectPosition: "center center",
+            maxWidth: "1000px",
+            margin: "0 auto",
+          }}
+          backgroundColor="#000"
         />
         <FullWidthCaption>Development model</FullWidthCaption>
       </figure>
