@@ -2,7 +2,7 @@ import { GatsbyConfig } from "gatsby"
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `K:Port - Low carbon, multi-modal transport hub by Hewitt Studios LLP`,
+    title: `K:Port - Low carbon, multi-modal transport hub`,
     description: `Proven smart city & EV charging solution, designed to inspire and enable the sustainable electrification of transport.`,
     author: `Hewitt Studios LLP`,
     siteUrl: "https://kport.co.uk",
