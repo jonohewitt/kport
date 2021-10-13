@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { useGlobalState } from "../context/globalState"
 
 const Section = styled.section`
-  background: ${props => props.theme.feature};
+  background: ${props => props.theme.partners};
   padding: 60px 0;
   h2 {
     opacity: 0.8;

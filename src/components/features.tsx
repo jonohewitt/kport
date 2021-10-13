@@ -21,7 +21,7 @@ const FeatureWrapper = styled.div`
   }
 
   :first-child {
-    padding-top: 110px;
+    padding-top: 80px;
   }
   :last-child {
     padding-bottom: max(30px, 9vw);
@@ -179,6 +179,8 @@ export const Features = () => {
       image: getImage(conceptData.small),
     },
   ])
+
+  const image = getImage(conceptData.small)
   return (
     <FeaturesContainer>
       <FeatureWrapper>
@@ -187,6 +189,7 @@ export const Features = () => {
             <ConceptImage
               image={conceptImages}
               alt="Shadows and light shining through photovoltaic panels onto the K:Port timber lattice structure."
+              loading="lazy"
             />
             <Caption>
               <span className="bold">Client:</span> North Somerset Council -
