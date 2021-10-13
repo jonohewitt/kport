@@ -1,4 +1,4 @@
-import React, { FC } from "react"
+import React, { EventHandler, FC, useEffect, useRef, useState } from "react"
 import { Link, PageProps } from "gatsby"
 import { Seo } from "../components/seo"
 import styled from "styled-components"
@@ -7,6 +7,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import { ContactButton } from "../components/contactButton"
 import { Partners } from "../components/partners"
 import { Features } from "../components/features"
+import { Carousel } from "../components/carousel"
 
 const rightArrowSVG = (
   <svg
@@ -24,19 +25,24 @@ const rightArrowSVG = (
   </svg>
 )
 
-const FullWidthCaption = styled.figcaption<{ side?: string }>`
-  margin: 10px 0;
+export const FullWidthCaption = styled.figcaption<{
+  side?: string
+  background?: string
+}>`
+  padding: 10px 0 15px 0;
   font-size: 10px;
   ${props =>
     props.side === "left"
       ? "text-align: start;"
-      : "position: absolute; right: 20px; text-align: end;"}
+      : "padding-right: 20px; text-align: end;"}
+
+  ${props => props.background && "background:" + props.background};
 `
 
 const Header = styled.header`
   width: 90%;
   max-width: 800px;
-  margin: 110px auto;
+  margin: 60px auto 80px auto;
   font-size: 22px;
   line-height: 1.6;
   h1 {
@@ -52,7 +58,7 @@ const Header = styled.header`
 const TextSection = styled.section`
   width: 90%;
   max-width: 800px;
-  margin: 110px auto;
+  margin: 90px auto 110px auto;
   font-size: 22px;
   line-height: 1.6;
   h2 {
@@ -94,7 +100,9 @@ const ArrowLink = styled.a`
 
 const HeaderWrapper = styled.div`
   display: flex;
+  /* Ensure h1 text is indexed first by search engines */
   flex-direction: column-reverse;
+  width: 100%;
 `
 
 const IndexPage: FC<PageProps> = () => {
@@ -119,19 +127,7 @@ const IndexPage: FC<PageProps> = () => {
           </p>
           <ContactButton />
         </Header>
-        <figure>
-          <StaticImage
-            src="../images/content/kport-bluesky.jpg"
-            alt="Detail of the K:Port timber structure with photovoltaic panels casting shadows"
-            loading="eager"
-            layout="fullWidth"
-            style={{ maxHeight: "55vh" }}
-          />
-          <FullWidthCaption>
-            <span className="bold">Client:</span> North Somerset Council -
-            Portishead Marina
-          </FullWidthCaption>
-        </figure>
+        <Carousel />
       </HeaderWrapper>
       <figure>
         <StaticImage
@@ -142,7 +138,9 @@ const IndexPage: FC<PageProps> = () => {
           style={{ minHeight: "30vh", maxHeight: "60vh" }}
           imgStyle={{ objectPosition: "right 90%" }}
         />
-        <FullWidthCaption>Concept image</FullWidthCaption>
+        <FullWidthCaption background="var(--feature)">
+          Concept image
+        </FullWidthCaption>
       </figure>
 
       <Features />
