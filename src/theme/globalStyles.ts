@@ -6,7 +6,13 @@ import reset from "styled-reset"
 export const GlobalStyles = createGlobalStyle`
   ${reset}
 
+  :root {
+    color-scheme: var(--theme);
+  }
+
   body {
+    
+    max-width: var(--fullWidth);
     color: var(--text);
     background: var(--background);
     font-family: HK Grotesk, sans-serif;
