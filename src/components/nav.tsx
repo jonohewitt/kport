@@ -1,8 +1,9 @@
 import { Link } from "gatsby"
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import { kportLogo } from "../images/svgs/kport-logo"
 import { ContactButton, ContactWrapper } from "./contactButton"
+import scrollTo from "gatsby-plugin-smoothscroll"
 
 const NavBar = styled.nav`
   padding: 15px 25px 25px 0;
@@ -19,11 +20,20 @@ const NavItem = styled.li<{ hideable?: boolean }>`
   }
 `
 
-const NavLink = styled(Link)`
+const NavLink = styled.a`
   font-size: 17px;
   color: ${props => props.theme.text};
   text-decoration: none;
+  cursor: pointer;
 
+  svg {
+    position: relative;
+    top: 5px;
+    margin-left: 25px;
+  }
+`
+
+const HomeLink = styled(Link)`
   svg {
     position: relative;
     top: 5px;
@@ -58,16 +68,33 @@ export const navOptions = [
   { name: "Smart City", link: "/#smartcity" },
 ]
 
+const navIDs = [
+  { name: "Concept", id: "concept" },
+  { name: "Sustainability", id: "sustainability" },
+  { name: "User Experience", id: "experience" },
+  { name: "Smart City", id: "smartcity" },
+]
+
 export const Nav = () => {
+  const handleClick = option => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
+
+    const options: boolean | ScrollIntoViewOptions = prefersReducedMotion
+      ? true
+      : { behavior: "smooth" }
+    document.getElementById(option.id).scrollIntoView(options)
+  }
   return (
     <NavBar aria-label="Primary navigation">
-      <NavLink to="/" aria-label="Home">
+      <HomeLink to="/" aria-label="Home">
         {kportLogo}
-      </NavLink>
+      </HomeLink>
       <NavList>
-        {navOptions.map(option => (
+        {navIDs.map(option => (
           <NavItem hideable key={option.name}>
-            <NavLink to={option.link}>{option.name}</NavLink>
+            <NavLink onClick={() => handleClick(option)}>{option.name}</NavLink>
           </NavItem>
         ))}
 
