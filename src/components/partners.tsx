@@ -5,6 +5,9 @@ import styled from "styled-components"
 import { useGlobalState } from "../context/globalState"
 
 const Section = styled.section`
+  position: relative;
+  z-index: 1;
+  transform: translate3d(0, 0, 0);
   background: ${props => props.theme.partners};
   padding: 60px 0;
   h2 {
@@ -23,7 +26,10 @@ const PartnerList = styled.ul<{ darkMode: boolean }>`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  gap: 3vw 5vw;
+  gap: 50px;
+  @media (max-width: 600px) {
+    gap: 30px;
+  }
   background: #fff;
   padding: max(5vw, 30px) 5vw;
   margin: 4vw;
@@ -77,7 +83,7 @@ export const Partners = () => {
       <h2>Working with:</h2>
       <PartnerList darkMode={state.theme === "dark"}>
         {logos.map(logo => (
-          <li key={logo.name}>
+          <li key={logo.name} title={logo.name}>
             <GatsbyImage
               image={getImage(logo)}
               alt={logo.name}

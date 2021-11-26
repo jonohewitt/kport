@@ -9,7 +9,10 @@ import React from "react"
 import styled from "styled-components"
 
 const FeaturesContainer = styled.div`
-  background: ${props => props.theme.feature};
+  background: var(--feature);
+  position: relative;
+  z-index: 1;
+  transform: translate3d(0, 0, 0);
 `
 
 const FeatureWrapper = styled.div`
@@ -24,7 +27,7 @@ const FeatureWrapper = styled.div`
     padding-top: 80px;
   }
   :last-child {
-    padding-bottom: max(30px, 9vw);
+    padding-bottom: max(20px, calc(10vw - 30px));
   }
 `
 
