@@ -1,9 +1,8 @@
 import { Link } from "gatsby"
-import React, { useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
 import { kportLogo } from "../images/svgs/kport-logo"
 import { ContactButton, ContactWrapper } from "./contactButton"
-import scrollTo from "gatsby-plugin-smoothscroll"
 
 const NavBar = styled.nav`
   padding: 15px 25px 25px 0;
@@ -76,8 +75,10 @@ const navIDs = [
 ]
 
 export const Nav = () => {
-  const handleClick = option => {
-    const prefersReducedMotion = window.matchMedia(
+  const handleClick = (e: MouseEvent, option: { name: string; id: string }) => {
+    e.preventDefault()
+
+    const prefersReducedMotion = matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches
 
@@ -94,7 +95,9 @@ export const Nav = () => {
       <NavList>
         {navIDs.map(option => (
           <NavItem hideable key={option.name}>
-            <NavLink onClick={() => handleClick(option)}>{option.name}</NavLink>
+            <NavLink href="" onClick={e => handleClick(e, option)}>
+              {option.name}
+            </NavLink>
           </NavItem>
         ))}
 
