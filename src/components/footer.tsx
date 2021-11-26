@@ -82,13 +82,18 @@ const Divider = styled.hr`
 const SocialIcons = styled.ul`
   @media (min-width: 850px) {
     position: absolute;
-    top: 60px;
+    top: 50px;
     right: 20px;
   }
 
   display: flex;
+
+  a {
+    display: inline-block;
+    padding: 10px;
+  }
   li {
-    margin-right: 28px;
+    margin-right: 18px;
   }
 `
 
@@ -243,6 +248,7 @@ export const Footer = () => {
             layout="constrained"
             width={250}
             loading="eager"
+            placeholder="none"
           />
         </DevelopedBy>
       </Container>
