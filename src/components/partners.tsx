@@ -26,8 +26,24 @@ const PartnerList = styled.ul<{ darkMode: boolean }>`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  grid-gap: 50px;
   gap: 50px;
+
+  /* target mobile safari */
+  @supports (selector(:nth-child(1 of x))) or (-webkit-touch-callout: none) {
+    li {
+      margin: 15px;
+      @media (max-width: 600px) {
+        margin: 12px;
+      }
+      @media (max-width: 400px) {
+        margin: 8px;
+      }
+    }
+  }
+
   @media (max-width: 600px) {
+    grid-gap: 30px;
     gap: 30px;
   }
   background: #fff;
