@@ -51,6 +51,9 @@ const Header = styled.header`
   h1 {
     font-size: 28px;
     max-width: 75%;
+    @media (max-width: 400px) {
+      max-width: 85%;
+    }
     font-weight: 500;
     margin-bottom: 30px;
     line-height: 1.4;

@@ -6,6 +6,9 @@ import { ContactButton, ContactWrapper } from "./contactButton"
 
 const NavBar = styled.nav`
   padding: 15px 25px 25px 0;
+  @media (max-width: 400px) {
+    padding: 15px 10px 25px 0;
+  }
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,6 +19,9 @@ const NavItem = styled.li<{ hideable?: boolean }>`
   margin-left: 25px;
   @media (max-width: 850px) {
     ${props => props.hideable && "display: none;"}
+  }
+  @media (max-width: 400px) {
+    margin-left: 5px;
   }
 `
 
@@ -42,6 +48,9 @@ const HomeLink = styled(Link)`
     position: relative;
     top: 5px;
     margin-left: 25px;
+    @media (max-width: 400px) {
+    margin-left: 15px;
+  }
   }
 `
 
@@ -54,6 +63,10 @@ const NavList = styled.ul`
     line-height: 1 !important;
     @media (max-width: 600px) {
       font-size: 14px;
+    }
+    @media (max-width: 400px) {
+      font-size: 14px;
+      padding: 8px;
     }
   }
 
