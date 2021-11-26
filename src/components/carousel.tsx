@@ -161,9 +161,13 @@ export const Carousel = () => {
   )
 
   const updateScrollPosition = () => {
+    const prefersReducedMotion = matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
+
     containerRef.current.scroll({
       left: (containerRef.current.offsetWidth + 40) * imageIndex.current,
-      behavior: "smooth",
+      behavior: prefersReducedMotion ? "auto" : "smooth",
     })
   }
 
@@ -236,6 +240,7 @@ export const Carousel = () => {
 
   useEffect(() => {
     handleScroll()
+    updateScrollPosition()
     addEventListener("resize", updateScrollPosition)
 
     return () => {
