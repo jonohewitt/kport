@@ -161,7 +161,7 @@ export const Features = () => {
       ) {
         name
         childImageSharp {
-          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED, width: 600)
         }
       }
       large: file(
@@ -170,7 +170,7 @@ export const Features = () => {
       ) {
         name
         childImageSharp {
-          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+          gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED, width: 450)
         }
       }
     }
@@ -219,6 +219,7 @@ export const Features = () => {
               alt="Detail of the chains used to facilitate rain water drainage from the roof panels"
               layout="constrained"
               placeholder="blurred"
+              width={600}
             />
             <Caption>
               <span className="bold">Client:</span> Transport for London -
@@ -247,6 +248,7 @@ export const Features = () => {
               alt="K:Port shown at night with LED strip lighting providing a safe environment"
               layout="constrained"
               placeholder="blurred"
+              width={600}
             />
             <Caption>
               <span className="bold">Client:</span> Transport for London -
@@ -275,6 +277,7 @@ export const Features = () => {
               alt="A man demonstrates K:Port in use by charging a Tesla electric car under the canopy"
               layout="constrained"
               placeholder="blurred"
+              width={600}
             />
             <Caption>
               <span className="bold">Client:</span> Transport for London -
