@@ -19,7 +19,12 @@ const NavItem = styled.li<{ hideable?: boolean }>`
   }
 `
 
-const NavLink = styled.a`
+const NavLink = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+
   font-size: 17px;
   color: ${props => props.theme.text};
   text-decoration: none;
@@ -76,7 +81,7 @@ const navIDs = [
 
 export const Nav = () => {
   const handleClick = (e: MouseEvent, option: { name: string; id: string }) => {
-    e.preventDefault()
+    // e.preventDefault()
 
     const prefersReducedMotion = matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -95,7 +100,7 @@ export const Nav = () => {
       <NavList>
         {navIDs.map(option => (
           <NavItem hideable key={option.name}>
-            <NavLink href="" onClick={e => handleClick(e, option)}>
+            <NavLink onClick={e => handleClick(e, option)}>
               {option.name}
             </NavLink>
           </NavItem>
