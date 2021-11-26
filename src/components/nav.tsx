@@ -18,6 +18,9 @@ const NavBar = styled.nav`
 const NavItem = styled.li<{ hideable?: boolean }>`
   margin-left: 25px;
   @media (max-width: 850px) {
+    margin-left: 20px;
+  }
+  @media (max-width: 765px) {
     ${props => props.hideable && "display: none;"}
   }
   @media (max-width: 400px) {
@@ -32,6 +35,13 @@ const NavLink = styled.button`
   font: inherit;
 
   font-size: 17px;
+  @media (max-width: 850px) {
+    font-size: 15px;
+  }
+  @media (max-width: 790px) {
+    font-size: 14px;
+  }
+
   color: ${props => props.theme.text};
   text-decoration: none;
   cursor: pointer;
@@ -49,8 +59,8 @@ const HomeLink = styled(Link)`
     top: 5px;
     margin-left: 25px;
     @media (max-width: 400px) {
-    margin-left: 15px;
-  }
+      margin-left: 15px;
+    }
   }
 `
 
