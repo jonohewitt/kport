@@ -153,7 +153,8 @@ const IndexPage: FC<PageProps> = () => {
           </h1>
           <p>
             A low-carbon, multi-modal transport hub, K:Port® has been created by
-            award winning architects Hewitt Studios LLP to democratise
+            award winning architects{" "}
+            <span className="no-break">Hewitt Studios LLP</span> to democratise
             e-mobility and inspire behavioural change within local communities.
           </p>
           <p>
