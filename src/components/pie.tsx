@@ -55,8 +55,11 @@ const Pie = styled.div`
 const PieWrapper = styled.div`
   position: absolute;
   @media (max-width: 600px) {
-      top: unset;
-      bottom: 24px;
+    top: unset;
+    bottom: 24px;
+    @media only screen and (hover: none) and (pointer: coarse) {
+      bottom: 10px;
+    }
   }
   top: 7px;
   right: 0;
