@@ -53,13 +53,12 @@ const BackButton = styled(ForwardButton)`
 const CarouselBackground = styled.div`
   display: contents;
   background: var(--feature);
-  @media (min-width: 600px) {
-  }
 `
 
 const AnotherDiv = styled.div`
-  @media (min-width: 600px) {
-    background: var(--feature);
+  background: var(--feature);
+
+  @media (min-width: 1000px) {
     position: sticky;
     top: 35px;
   }
@@ -114,6 +113,10 @@ const ScrollArea = styled.div<{ imageCount: number }>`
   display: grid;
   column-gap: var(--columnGap);
   grid-template-columns: repeat(var(--imageCount), 1fr);
+
+  @media (max-width: 1000px) {
+    background: var(--background);
+  }
 `
 
 const Figure = styled.figure`
