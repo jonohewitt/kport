@@ -19,11 +19,13 @@ const ForwardButton = styled.button`
     transition: width 0.2s, height 0.2s;
   }
 
-  :hover {
-    opacity: 0.8 !important;
-    svg {
-      height: 35px;
-      width: 35px;
+  @media (hover: hover) {
+    :hover {
+      opacity: 0.8 !important;
+      svg {
+        height: 35px;
+        width: 35px;
+      }
     }
   }
 
@@ -71,9 +73,11 @@ const CarouselContainer = styled.div`
     max-width: 1000px;
     margin: 0 auto;
     top: -35px;
-    :hover {
-      ${ForwardButton} {
-        opacity: 0.7;
+    @media (hover: hover) {
+      :hover {
+        ${ForwardButton} {
+          opacity: 0.7;
+        }
       }
     }
   }
@@ -91,6 +95,20 @@ const ControlButtons = styled.div`
   position: absolute;
   bottom: 16px;
   width: 100%;
+  @media (min-width: 1180px) {
+    width: calc(100% + 160px);
+    left: -80px;
+    ${ForwardButton} {
+      filter: unset;
+      svg {
+        stroke: var(--text);
+      }
+    }
+    @media (min-width: 1300px) {
+      width: calc(100% + 200px);
+      left: -100px;
+    }
+  }
   height: calc(100% - 50px);
   display: flex;
   justify-content: space-between;
@@ -113,10 +131,6 @@ const ScrollArea = styled.div<{ imageCount: number }>`
   display: grid;
   column-gap: var(--columnGap);
   grid-template-columns: repeat(var(--imageCount), 1fr);
-
-  @media (max-width: 1000px) {
-    background: var(--background);
-  }
 `
 
 const Figure = styled.figure`
