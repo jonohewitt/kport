@@ -88,33 +88,28 @@ const NavList = styled.ul`
   }
 `
 
-export const navOptions = [
-  { name: "Concept", link: "/#concept" },
-  { name: "Sustainability", link: "/#sustainability" },
-  { name: "User Experience", link: "/#experience" },
-  { name: "Smart City", link: "/#smartcity" },
-]
-
-const navIDs = [
+export const navIDs = [
   { name: "Concept", id: "concept" },
   { name: "Sustainability", id: "sustainability" },
   { name: "User Experience", id: "experience" },
   { name: "Smart City", id: "smartcity" },
 ]
 
+export const handleClick = (
+  e: MouseEvent,
+  option: { name: string; id: string }
+) => {
+  const prefersReducedMotion = matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches
+
+  const options: boolean | ScrollIntoViewOptions = prefersReducedMotion
+    ? true
+    : { behavior: "smooth" }
+  document.getElementById(option.id).scrollIntoView(options)
+}
+
 export const Nav = () => {
-  const handleClick = (e: MouseEvent, option: { name: string; id: string }) => {
-    // e.preventDefault()
-
-    const prefersReducedMotion = matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches
-
-    const options: boolean | ScrollIntoViewOptions = prefersReducedMotion
-      ? true
-      : { behavior: "smooth" }
-    document.getElementById(option.id).scrollIntoView(options)
-  }
   return (
     <NavBar aria-label="Primary navigation">
       <HomeLink to="/" aria-label="Home">

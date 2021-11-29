@@ -3,7 +3,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
 import { ContactButton, ContactWrapper } from "./contactButton"
-import { navOptions } from "./nav"
+import { handleClick, navIDs } from "./nav"
 
 const Container = styled.div`
   width: 90%;
@@ -43,11 +43,17 @@ const FooterNavList = styled.ul`
 `
 const FooterNavItem = styled.li``
 
-const FooterNavLink = styled(Link)`
+const FooterNavLink = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+
+  color: var(--text);
   font-size: 22px;
   text-decoration: none;
   margin-bottom: 15px;
-  display: inline-block;
+  cursor: pointer;
 
   svg {
     transition: opacity 0.2s;
@@ -215,9 +221,9 @@ export const Footer = () => {
         <Divider />
         <FooterNav aria-label="Footer navigation">
           <FooterNavList>
-            {navOptions.map(option => (
+            {navIDs.map(option => (
               <FooterNavItem key={option.name}>
-                <FooterNavLink to={option.link}>
+                <FooterNavLink onClick={e => handleClick(e, option)}>
                   {option.name} {upArrowSVG}
                 </FooterNavLink>
               </FooterNavItem>
