@@ -66,7 +66,7 @@ const AnotherDiv = styled.div`
 
 const CarouselContainer = styled.div`
   position: relative;
-
+  background: var(--background);
   @media (min-width: 600px) {
     max-width: 1000px;
     margin: 0 auto;
