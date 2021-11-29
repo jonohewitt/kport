@@ -30,10 +30,12 @@ const FooterNav = styled.nav`
   }
 
   ${ContactWrapper} {
-    :hover {
-      color: ${props => props.theme.footer};
-      background: ${props => props.theme.footerText};
-      border: 2px solid ${props => props.theme.footerText};
+    @media (hover: hover) {
+      :hover {
+        color: ${props => props.theme.footer};
+        background: ${props => props.theme.footerText};
+        border: 2px solid ${props => props.theme.footerText};
+      }
     }
   }
 `
@@ -59,10 +61,11 @@ const FooterNavLink = styled.button`
     transition: opacity 0.2s;
     opacity: 0;
   }
-
-  :hover {
-    svg {
-      opacity: 1;
+  @media (hover: hover) {
+    :hover {
+      svg {
+        opacity: 1;
+      }
     }
   }
 `

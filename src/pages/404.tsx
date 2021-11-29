@@ -49,13 +49,14 @@ const ArrowLink = styled(Link)`
     left: 0;
     transition: 0.2s;
   }
-
-  :hover {
-    span {
-      border-bottom: 2px solid var(--text);
-    }
-    svg {
-      left: 6px;
+  @media (hover: hover) {
+    :hover {
+      span {
+        border-bottom: 2px solid var(--text);
+      }
+      svg {
+        left: 6px;
+      }
     }
   }
 `

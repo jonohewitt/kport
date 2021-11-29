@@ -116,13 +116,14 @@ const ArrowLink = styled.a`
     left: 0;
     transition: 0.2s;
   }
-
-  :hover {
-    .underline {
-      border-bottom: 2px solid var(--text);
-    }
-    svg {
-      left: 6px;
+  @media (hover: hover) {
+    :hover {
+      .underline {
+        border-bottom: 2px solid var(--text);
+      }
+      svg {
+        left: 6px;
+      }
     }
   }
 `

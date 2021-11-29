@@ -14,11 +14,12 @@ export const ContactWrapper = styled.a`
   line-height: 1.2;
 
   transition: 0.2s;
-
-  :hover {
-    color: ${props => props.theme.background};
-    background: ${props => props.theme.text};
-    border: 2px solid ${props => props.theme.text};
+  @media (hover: hover) {
+    :hover {
+      color: ${props => props.theme.background};
+      background: ${props => props.theme.text};
+      border: 2px solid ${props => props.theme.text};
+    }
   }
 `
 

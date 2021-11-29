@@ -82,8 +82,10 @@ const NavList = styled.ul`
 
   ${NavLink} {
     padding-bottom: 7px;
-    :hover {
-      border-bottom: 2px solid var(--text);
+    @media (hover: hover) {
+      :hover {
+        border-bottom: 2px solid var(--text);
+      }
     }
   }
 `

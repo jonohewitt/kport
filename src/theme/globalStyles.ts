@@ -30,10 +30,11 @@ export const GlobalStyles = createGlobalStyle`
     color: var(--text);
     border-bottom: 1px solid var(--text);
     text-decoration: none;
-
+    @media (hover: hover) {
     :hover {
       border-bottom: 2px solid var(--text);
     }
+  }
   }
   }
 
