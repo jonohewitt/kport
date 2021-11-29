@@ -49,7 +49,7 @@ const FooterNavLink = styled.button`
   padding: 0;
   font: inherit;
 
-  color: var(--text);
+  color: var(--footerText);
   font-size: 22px;
   text-decoration: none;
   margin-bottom: 15px;
