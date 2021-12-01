@@ -1,5 +1,11 @@
 import { graphql, useStaticQuery } from "gatsby"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import {
+  GatsbyImage,
+  getImage,
+  IGatsbyImageData,
+  ImageDataLike,
+} from "gatsby-plugin-image"
+import { FileNode } from "gatsby-plugin-image/dist/src/components/hooks"
 import React from "react"
 import styled from "styled-components"
 import { useGlobalState } from "../context/globalState"
@@ -51,31 +57,15 @@ const PartnerList = styled.ul<{ darkMode: boolean }>`
   margin: 4vw;
   box-shadow: 0px 4px 20px #0003;
 
-  ${props => props.darkMode && "filter: brightness(0.9);"}
+  ${props => props.darkMode && "filter: brightness(0.9);"};
 `
 
-// const PartnerList = styled.ul<{ darkMode: boolean }>`
-//   display: grid;
-//   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-//   background: #fff;
-//   grid-column-gap: 5vw;
-//   grid-row-gap: 3vw;
-//   padding: 5vw;
-//   margin: 4vw;
-//   box-shadow: 0px 4px 20px #0003;
-
-//   ${props => props.darkMode && "filter: brightness(0.85);"}
-
-//   li {
-//     /* opacity: 0.9; */
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//   }
-// `
+interface Logo extends FileNode {
+  name: string
+}
 
 export const Partners = () => {
-  const logos = useStaticQuery(graphql`
+  const logos: Logo[] = useStaticQuery(graphql`
     query MyQuery {
       allFile(filter: { sourceInstanceName: { eq: "logos" } }) {
         nodes {
@@ -101,7 +91,7 @@ export const Partners = () => {
         {logos.map(logo => (
           <li key={logo.name} title={logo.name}>
             <GatsbyImage
-              image={getImage(logo)}
+              image={getImage(logo) as IGatsbyImageData}
               alt={logo.name}
               backgroundColor="#fff"
               style={{

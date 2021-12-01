@@ -1,5 +1,11 @@
 import { StaticImage } from "gatsby-plugin-image"
-import React, { useEffect, useRef, useState } from "react"
+import React, {
+  MutableRefObject,
+  useEffect,
+  useRef,
+  useState,
+  WheelEvent,
+} from "react"
 import styled from "styled-components"
 import { PieCountdown } from "./pie"
 
@@ -54,11 +60,11 @@ const BackButton = styled(ForwardButton)`
 
 const CarouselBackground = styled.div`
   display: contents;
-  background: var(--feature);
+  background: ${({ theme }) => theme.feature};
 `
 
 const AnotherDiv = styled.div`
-  background: var(--feature);
+  background: ${({ theme }) => theme.feature};
 
   @media (min-width: 1000px) {
     position: sticky;
@@ -68,7 +74,7 @@ const AnotherDiv = styled.div`
 
 const CarouselContainer = styled.div`
   position: relative;
-  background: var(--background);
+  background: ${({ theme }) => theme.background};
   @media (min-width: 600px) {
     max-width: 1000px;
     margin: 0 auto;
@@ -88,7 +94,7 @@ const CarouselWrapper = styled.div`
   @supports (contain: paint) {
     scroll-snap-type: x mandatory;
   }
-  color-scheme: var(--theme);
+  color-scheme: ${({ theme }) => theme.theme};
 `
 
 const ControlButtons = styled.div`
@@ -101,7 +107,7 @@ const ControlButtons = styled.div`
     ${ForwardButton} {
       filter: unset;
       svg {
-        stroke: var(--text);
+        stroke: ${({ theme }) => theme.text};
       }
     }
     @media (min-width: 1300px) {
@@ -142,7 +148,7 @@ const Figure = styled.figure`
   scroll-snap-stop: always;
 `
 
-const FigCaption = styled.figcaption<{ showPie: boolean }>`
+const FigCaption = styled.figcaption<{ showPie: boolean | undefined }>`
   padding: 12px ${props => (props.showPie !== false ? "40px" : "20px")} 12px 0;
   font-size: 11px;
   text-align: end;
@@ -150,13 +156,13 @@ const FigCaption = styled.figcaption<{ showPie: boolean }>`
 `
 
 export const Carousel = () => {
-  const containerRef = useRef<HTMLDivElement>()
-  const scrollRef = useRef<HTMLDivElement>()
+  const containerRef = useRef() as MutableRefObject<HTMLDivElement>
+  const scrollRef = useRef() as MutableRefObject<HTMLDivElement>
   const imageIndex = useRef(0)
-  const [showPie, setShowPie] = useState(undefined)
+  const [showPie, setShowPie] = useState<boolean | undefined>(undefined)
   const [refreshPie, setRefreshPie] = useState(0)
 
-  const autoUpdateID = useRef(undefined)
+  const autoUpdateID = useRef<NodeJS.Timer | undefined>(undefined)
   const intervalStarted = useRef(false)
 
   const nextArrow = (
@@ -221,9 +227,13 @@ export const Carousel = () => {
     }
   }
 
-  const handleWheel = e => {
+  const handleWheel = (e: WheelEvent) => {
     // check for horizontal scroll
-    if (Math.abs(e.deltaX) > Math.abs(e.deltaY) * 3 && Math.abs(e.deltaX) > 5) {
+    if (
+      autoUpdateID.current &&
+      Math.abs(e.deltaX) > Math.abs(e.deltaY) * 3 &&
+      Math.abs(e.deltaX) > 5
+    ) {
       stopAutoAdvance()
     }
   }
@@ -261,7 +271,7 @@ export const Carousel = () => {
     addEventListener("resize", updateScrollPosition)
 
     return () => {
-      clearInterval(autoUpdateID.current)
+      clearInterval(autoUpdateID.current as NodeJS.Timer)
       removeEventListener("resize", updateScrollPosition)
     }
   }, [])

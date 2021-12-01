@@ -3,13 +3,13 @@ import styled from "styled-components"
 
 const Pie = styled.div`
   /* Thanks to Kitty Giraudel: https://kittygiraudel.com/2021/04/11/css-pie-timer-revisited/ */
+  --color: ${({ theme }) => theme.lowContrast};
 
   position: relative;
   width: 16px;
   height: 16px;
   border-radius: 50%;
   border: 1px solid var(--color);
-  --color: var(--lowContrast);
 
   ::before,
   ::after {
@@ -26,7 +26,7 @@ const Pie = styled.div`
 
   ::before {
     z-index: 1;
-    background-color: var(--background);
+    background-color: ${({ theme }) => theme.background};
     animation-name: mask;
     animation-timing-function: steps(1);
   }
@@ -66,8 +66,8 @@ const PieWrapper = styled.div`
   z-index: 1;
   background: linear-gradient(
     to left,
-    var(--background) 20px,
-    /* red 20px, */ var(--transparentBG)
+    ${({ theme }) => theme.background} 20px,
+    ${({ theme }) => theme.transparentBG}
   );
   padding: 0 10px 0 20px;
   @media (min-width: 1100px) {
@@ -75,7 +75,7 @@ const PieWrapper = styled.div`
   }
 `
 
-export const PieCountdown = ({ refreshPie }) => (
+export const PieCountdown = ({ refreshPie }: { refreshPie: number }) => (
   <PieWrapper key={refreshPie}>
     <Pie />
   </PieWrapper>

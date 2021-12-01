@@ -13,12 +13,12 @@ const Container = styled.div`
 const Wrapper = styled.footer`
   position: relative;
   padding: 40px 0;
-  background: var(--footer);
-  color: var(--footerText);
+  background: ${props => props.theme.footer};
+  color: ${props => props.theme.footerText};
 
   hr {
     height: 3px;
-    background: var(--footerText);
+    background: ${props => props.theme.footerText};
     border: none;
   }
 `
@@ -26,15 +26,15 @@ const Wrapper = styled.footer`
 const FooterNav = styled.nav`
   margin-bottom: 50px;
   a {
-    color: var(--footerText);
+    color: ${({ theme }) => theme.footerText};
   }
 
   ${ContactWrapper} {
     @media (hover: hover) {
       :hover {
-        color: ${props => props.theme.footer};
-        background: ${props => props.theme.footerText};
-        border: 2px solid ${props => props.theme.footerText};
+        color: ${({ theme }) => theme.footer};
+        background: ${({ theme }) => theme.footerText};
+        border: 2px solid ${({ theme }) => theme.footerText};
       }
     }
   }
@@ -43,7 +43,6 @@ const FooterNav = styled.nav`
 const FooterNavList = styled.ul`
   margin-bottom: 10px;
 `
-const FooterNavItem = styled.li``
 
 const FooterNavLink = styled.button`
   background: none;
@@ -51,7 +50,7 @@ const FooterNavLink = styled.button`
   padding: 0;
   font: inherit;
 
-  color: var(--footerText);
+  color: ${({ theme }) => theme.footerText};
   font-size: 22px;
   text-decoration: none;
   margin-bottom: 15px;
@@ -116,11 +115,6 @@ const DevelopedBy = styled.a`
     bottom: 28px;
     right: 30px;
   }
-
-  /* p {
-    text-align: right;
-    margin-right: 10px;
-  } */
 `
 
 const linkedInSVG = (
@@ -133,7 +127,7 @@ const linkedInSVG = (
   >
     <path
       d="M27.2802 0.258789H2.51785C1.3832 0.258789 0.461304 1.15777 0.461304 2.26135V26.0317C0.461304 27.1353 1.3832 28.0342 2.51785 28.0342H27.2802C28.4149 28.0342 29.3432 27.1353 29.3432 26.0317V2.26135C29.3432 1.15777 28.4149 0.258789 27.2802 0.258789ZM9.19035 24.0663H4.90964V10.811H9.1968V24.0663H9.19035ZM7.04999 9.00062C5.67681 9.00062 4.56795 7.92804 4.56795 6.61366C4.56795 5.29929 5.67681 4.22671 7.04999 4.22671C8.41673 4.22671 9.53204 5.29929 9.53204 6.61366C9.53204 7.93424 8.42318 9.00062 7.04999 9.00062ZM25.2366 24.0663H20.9559V17.6185C20.9559 16.0809 20.9236 14.1031 18.7317 14.1031C16.5011 14.1031 16.1594 15.7771 16.1594 17.5069V24.0663H11.8787V10.811H15.9853V12.6213H16.0434C16.6171 11.5798 18.0161 10.4824 20.0984 10.4824C24.4307 10.4824 25.2366 13.2289 25.2366 16.8001V24.0663Z"
-      fill="var(--footerText)"
+      fill={"var(--footerText)"}
     />
   </svg>
 )
@@ -225,11 +219,11 @@ export const Footer = () => {
         <FooterNav aria-label="Footer navigation">
           <FooterNavList>
             {navIDs.map(option => (
-              <FooterNavItem key={option.name}>
+              <li key={option.name}>
                 <FooterNavLink onClick={e => handleClick(e, option)}>
                   {option.name} {upArrowSVG}
                 </FooterNavLink>
-              </FooterNavItem>
+              </li>
             ))}
           </FooterNavList>
           <ContactButton />
@@ -250,7 +244,6 @@ export const Footer = () => {
           rel="noopener"
           aria-label="Visit the Hewitt Studios website"
         >
-          {/* <p>Developed by</p> */}
           <StaticImage
             src="../images/content/hewitt-studios-logo.png"
             alt=""

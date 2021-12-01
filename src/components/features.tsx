@@ -2,6 +2,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import {
   GatsbyImage,
   getImage,
+  IGatsbyImageData,
   StaticImage,
   withArtDirection,
 } from "gatsby-plugin-image"
@@ -9,7 +10,7 @@ import React from "react"
 import styled from "styled-components"
 
 const FeaturesContainer = styled.div`
-  background: var(--feature);
+  background: ${({ theme }) => theme.feature};
   position: relative;
   z-index: 1;
   transform: translate3d(0, 0, 0);
@@ -110,9 +111,9 @@ const FeatureSection = styled.section<{
       ${Caption} {
         text-align: left;
         margin-left: 20px;
-        ${props => props.portrait && "margin-left: 0"}
+        ${props => props.portrait && "margin-left: 0;"}
 
-        @media (min-width: 1120px) {
+        @media (min-width: 1160px) {
           margin-left: 0;
         }
       }
@@ -128,8 +129,8 @@ const FeatureSection = styled.section<{
       ${Caption} {
         text-align: right;
         margin-right: 20px;
-        ${props => props.portrait && "margin-right: 0"}
-        @media (min-width: 1120px) {
+        ${props => props.portrait && "margin-right: 0;"}
+        @media (min-width: 1160px) {
           margin-right: 0;
         }
       }
@@ -176,14 +177,16 @@ export const Features = () => {
     }
   `)
 
-  const conceptImages = withArtDirection(getImage(conceptData.large), [
-    {
-      media: "(max-width: 700px)",
-      image: getImage(conceptData.small),
-    },
-  ])
+  const conceptImages = withArtDirection(
+    getImage(conceptData.large) as IGatsbyImageData,
+    [
+      {
+        media: "(max-width: 700px)",
+        image: getImage(conceptData.small) as IGatsbyImageData,
+      },
+    ]
+  )
 
-  const image = getImage(conceptData.small)
   return (
     <FeaturesContainer>
       <FeatureWrapper>

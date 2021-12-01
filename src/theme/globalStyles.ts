@@ -7,14 +7,15 @@ export const GlobalStyles = createGlobalStyle`
   ${reset}
 
   :root {
-    color-scheme: var(--theme);
+    color-scheme: ${({ theme }) => theme.theme};
   }
 
   body {
     
-    max-width: var(--fullWidth);
-    color: var(--text);
-    background: var(--background);
+    max-width: ${({ theme }) => theme.fullWidth};
+    color: ${({ theme }) => theme.text};
+    background: ${({ theme }) => theme.background};
+
     font-family: HK Grotesk, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -27,15 +28,15 @@ export const GlobalStyles = createGlobalStyle`
 
   p, h2 {
     a {
-    color: var(--text);
-    border-bottom: 1px solid var(--text);
+    color: ${({ theme }) => theme.text};
+    border-bottom: 1px solid ${({ theme }) => theme.text};
     text-decoration: none;
     @media (hover: hover) {
-    :hover {
-      border-bottom: 2px solid var(--text);
+      :hover {
+        border-bottom: 2px solid ${({ theme }) => theme.text};
+      }
     }
-  }
-  }
+    }
   }
 
   .screen-reader-only {

@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import React from "react"
+import React, { MouseEvent, SyntheticEvent } from "react"
 import styled from "styled-components"
 import { kportLogo } from "../images/svgs/kport-logo"
 import { ContactButton, ContactWrapper } from "./contactButton"
@@ -12,7 +12,7 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--nav);
+  background: ${({ theme }) => theme.nav};
 `
 
 const NavItem = styled.li<{ hideable?: boolean }>`
@@ -31,10 +31,10 @@ const NavItem = styled.li<{ hideable?: boolean }>`
 const NavLink = styled.button`
   background: none;
   border: none;
-  padding: 0;
+  padding: 0 0 7px 0;
   font: inherit;
-
   font-size: 17px;
+
   @media (max-width: 850px) {
     font-size: 15px;
   }
@@ -45,6 +45,12 @@ const NavLink = styled.button`
   color: ${props => props.theme.text};
   text-decoration: none;
   cursor: pointer;
+
+  @media (hover: hover) {
+    :hover {
+      border-bottom: 2px solid ${({ theme }) => theme.text};
+    }
+  }
 
   svg {
     position: relative;
@@ -70,22 +76,13 @@ const NavList = styled.ul`
 
   ${ContactWrapper} {
     font-size: 17px;
-    line-height: 1 !important;
+    line-height: 1;
     @media (max-width: 600px) {
       font-size: 14px;
     }
     @media (max-width: 400px) {
       font-size: 14px;
       padding: 8px;
-    }
-  }
-
-  ${NavLink} {
-    padding-bottom: 7px;
-    @media (hover: hover) {
-      :hover {
-        border-bottom: 2px solid var(--text);
-      }
     }
   }
 `
@@ -98,7 +95,7 @@ export const navIDs = [
 ]
 
 export const handleClick = (
-  e: MouseEvent,
+  e: SyntheticEvent,
   option: { name: string; id: string }
 ) => {
   const prefersReducedMotion = matchMedia(
@@ -108,7 +105,8 @@ export const handleClick = (
   const options: boolean | ScrollIntoViewOptions = prefersReducedMotion
     ? true
     : { behavior: "smooth" }
-  document.getElementById(option.id).scrollIntoView(options)
+
+  document.getElementById(option.id)?.scrollIntoView(options)
 }
 
 export const Nav = () => {

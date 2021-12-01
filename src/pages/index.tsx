@@ -1,5 +1,5 @@
-import React, { EventHandler, FC, useEffect, useRef, useState } from "react"
-import { Link, PageProps } from "gatsby"
+import React, { FC } from "react"
+import { PageProps } from "gatsby"
 import { Seo } from "../components/seo"
 import styled from "styled-components"
 import { useGlobalState } from "../context/globalState"
@@ -33,7 +33,7 @@ export const FullWidthCaption = styled.figcaption<{
   z-index: 1;
   padding: 10px 0 15px 0;
   font-size: 10px;
-  background: var(--background);
+  background: ${({ theme }) => theme.background};
   ${props =>
     props.side === "left"
       ? "text-align: start;"
@@ -61,7 +61,7 @@ const Header = styled.header`
   p {
     font-size: 18px;
     margin-bottom: 12px;
-    color: ${props => props.theme.lightText};
+    color: ${({ theme }) => theme.lightText};
   }
 
   a {
@@ -71,7 +71,7 @@ const Header = styled.header`
 
 const TextSection = styled.section`
   position: relative;
-  background: var(--background);
+  background: ${({ theme }) => theme.background};
   z-index: 1;
   transform: translate3d(0, 0, 0);
 `
@@ -93,7 +93,7 @@ const TextSectionContent = styled.div`
     }
   }
   p {
-    color: var(--lightText);
+    color: ${({ theme }) => theme.lightText};
     font-size: 18px;
     margin-bottom: 14px;
   }
@@ -103,12 +103,12 @@ const ArrowLink = styled.a`
   display: inline-block;
   font-size: 16px;
   border-bottom: none;
-  color: var(--text);
+  color: ${({ theme }) => theme.text};
   text-decoration: none;
   font-weight: 500;
   margin-top: 40px;
   .underline {
-    border-bottom: 1px solid var(--text);
+    border-bottom: 1px solid ${({ theme }) => theme.text};
   }
   svg {
     position: relative;
@@ -119,7 +119,7 @@ const ArrowLink = styled.a`
   @media (hover: hover) {
     :hover {
       .underline {
-        border-bottom: 2px solid var(--text);
+        border-bottom: 2px solid ${({ theme }) => theme.text};
       }
       svg {
         left: 6px;

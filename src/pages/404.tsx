@@ -36,12 +36,12 @@ const Text = styled.header`
 const ArrowLink = styled(Link)`
   font-size: 18px;
   border-bottom: none;
-  color: var(--text);
+  color: ${({ theme }) => theme.text};
   text-decoration: none;
   font-weight: 500;
   padding: 20px;
   span {
-    border-bottom: 1px solid var(--text);
+    border-bottom: 1px solid ${({ theme }) => theme.text};
   }
   svg {
     position: relative;
@@ -52,7 +52,7 @@ const ArrowLink = styled(Link)`
   @media (hover: hover) {
     :hover {
       span {
-        border-bottom: 2px solid var(--text);
+        border-bottom: 2px solid ${({ theme }) => theme.text};
       }
       svg {
         left: 6px;
