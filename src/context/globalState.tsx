@@ -9,31 +9,28 @@ import React, {
 
 import { lightTheme, darkTheme, Theme } from "../theme/themeVariables"
 
+export type ThemeName = "light" | "dark" | undefined
+
 interface State {
-  theme: string
+  theme: ThemeName
 }
 
 interface ReducerAction {
   type: string
-  payload?: any
+  payload?: ThemeName
 }
 
-const GlobalState = createContext<{
+interface Context {
   state: State
   dispatch: Dispatch<ReducerAction>
-}>(undefined)
+}
 
-export const useGlobalState = () => useContext(GlobalState)
+const GlobalState = createContext({} as Context)
 
-export const GlobalProvider = ({ children }) => {
+export const GlobalProvider = ({ children }: { children: any }) => {
   const initialState: State = {
     theme: undefined,
   }
-
-  useEffect(() => {
-    const theme = document.documentElement.attributes["theme"].value
-    dispatch({ type: "setInitialTheme", payload: theme })
-  }, [])
 
   const reducer = (state: State, action: ReducerAction) => {
     switch (action.type) {
@@ -62,8 +59,10 @@ export const GlobalProvider = ({ children }) => {
             break
         }
 
-        localStorage.setItem("theme", action.payload)
-        root.setAttribute("theme", action.payload)
+        if (action.payload) {
+          localStorage.setItem("theme", action.payload)
+          root.setAttribute("theme", action.payload)
+        }
 
         return { ...state, theme: action.payload }
       }
@@ -74,10 +73,21 @@ export const GlobalProvider = ({ children }) => {
       //     example: action.payload,
       //   }
       // }
+
+      default:
+        return state
     }
   }
 
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch]: [
+    state: State,
+    dispatch: ({ type, payload }: ReducerAction) => void
+  ] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    const theme: ThemeName = document.documentElement.attributes.theme?.value
+    dispatch({ type: "setInitialTheme", payload: theme })
+  }, [])
 
   const contextValue = useMemo(() => {
     return { state, dispatch }
@@ -87,3 +97,5 @@ export const GlobalProvider = ({ children }) => {
     <GlobalState.Provider value={contextValue}>{children}</GlobalState.Provider>
   )
 }
+
+export const useGlobalState = () => useContext(GlobalState)
