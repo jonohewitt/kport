@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
+import { useGlobalState } from "../context/globalState"
 import { ContactButton, ContactWrapper } from "./contactButton"
 import { handleClick, navIDs } from "./nav"
 
@@ -180,6 +181,10 @@ const upArrowSVG = (
 )
 
 export const Footer = () => {
+  const {
+    state: { theme },
+    dispatch,
+  } = useGlobalState()
   return (
     <Wrapper>
       <Container>
@@ -218,6 +223,20 @@ export const Footer = () => {
         <Divider />
         <FooterNav aria-label="Footer navigation">
           <FooterNavList>
+            {process.env.NODE_ENV === "development" && (
+              <li>
+                <FooterNavLink
+                  onClick={() =>
+                    dispatch({
+                      type: "setTheme",
+                      payload: theme === "dark" ? "light" : "dark",
+                    })
+                  }
+                >
+                  Switch to {theme === "dark" ? "Light" : "Dark"} Theme
+                </FooterNavLink>
+              </li>
+            )}
             {navIDs.map(option => (
               <li key={option.name}>
                 <FooterNavLink onClick={e => handleClick(e, option)}>
