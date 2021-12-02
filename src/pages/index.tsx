@@ -2,7 +2,6 @@ import React, { FC } from "react"
 import { PageProps } from "gatsby"
 import { Seo } from "../components/seo"
 import styled from "styled-components"
-import { useGlobalState } from "../context/globalState"
 import { StaticImage } from "gatsby-plugin-image"
 import { ContactButton } from "../components/contactButton"
 import { Partners } from "../components/partners"
@@ -144,8 +143,6 @@ const HeaderWrapper = styled.div`
 `
 
 const IndexPage: FC<PageProps> = () => {
-  // const { dispatch } = useGlobalState()
-
   return (
     <>
       <Seo title="Overview" />
@@ -287,14 +284,6 @@ const IndexPage: FC<PageProps> = () => {
         </FullWidthCaption>
       </Figure>
       <Partners />
-
-      {/* 
-      <button onClick={() => dispatch({ type: "setTheme", payload: "dark" })}>
-        Switch to dark
-      </button>
-      <button onClick={() => dispatch({ type: "setTheme", payload: "light" })}>
-        Switch to light
-      </button>*/}
     </>
   )
 }
