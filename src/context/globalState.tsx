@@ -42,11 +42,9 @@ export const GlobalProvider = ({ children }: { children: any }) => {
       }
 
       case "setTheme": {
-        const root = document.documentElement
-
         const setCSSVariables = (theme: Theme) => {
           Object.entries(theme).forEach(([name, value]) =>
-            root.style.setProperty(`--${name}`, value)
+            document.documentElement.style.setProperty(`--${name}`, value)
           )
         }
 
@@ -59,10 +57,7 @@ export const GlobalProvider = ({ children }: { children: any }) => {
             break
         }
 
-        if (action.payload) {
-          localStorage.setItem("theme", action.payload)
-          root.setAttribute("theme", action.payload)
-        }
+        if (action.payload) localStorage.setItem("theme", action.payload)
 
         return { ...state, theme: action.payload }
       }

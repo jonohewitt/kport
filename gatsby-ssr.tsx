@@ -11,7 +11,6 @@ import { GlobalProvider } from "./src/context/globalState"
 
 const ScriptInjection = () => {
   let codeToRunOnClient = `(() => {
-    const root = document.documentElement
     const darkTheme = ${JSON.stringify(darkTheme)}
     const lightTheme = ${JSON.stringify(lightTheme)}
 
@@ -41,12 +40,10 @@ const ScriptInjection = () => {
       themeName = "light"
     }
 
-    root.setAttribute("theme", themeName)
-
     Object.entries(theme).forEach(
       ([key, value]) => {
         const cssVarName = \`--\${key}\`
-        root.style.setProperty(cssVarName, value)
+        document.documentElement.style.setProperty(cssVarName, value)
       }
     )
   })()`
@@ -54,12 +51,18 @@ const ScriptInjection = () => {
   return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />
 }
 
-export const onRenderBody = ({ setPreBodyComponents }) => {
+export const onRenderBody = ({
+  setPreBodyComponents,
+}: {
+  setPreBodyComponents: any
+}) => {
   setPreBodyComponents(<ScriptInjection key="🔑" />)
 }
 
-export const wrapRootElement = ({ element }) => (
+export const wrapRootElement = ({ element }: { element: any }) => (
   <GlobalProvider>{element}</GlobalProvider>
 )
 
-export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>
+export const wrapPageElement = ({ element }: { element: any }) => (
+  <Layout>{element}</Layout>
+)
