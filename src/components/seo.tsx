@@ -74,7 +74,7 @@ export const Seo: FC<Seo> = ({
         {
           property: `og:image:alt`,
           content:
-            "K:Port timber structure, ingtegrated lighting and photovoltaic roof panels",
+            "K:Port timber structure, integrated lighting and photovoltaic roof panels",
         },
         {
           property: `og:url`,
@@ -114,7 +114,7 @@ export const Seo: FC<Seo> = ({
         {
           property: `twitter:image:alt`,
           content:
-            "K:Port timber structure, ingtegrated lighting and photovoltaic roof panels",
+            "K:Port timber structure, integrated lighting and photovoltaic roof panels",
         },
         {
           name: `twitter:title`,
