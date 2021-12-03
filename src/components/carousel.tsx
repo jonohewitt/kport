@@ -194,6 +194,20 @@ export const Carousel = () => {
     })
   }
 
+  const handleScroll = () => {
+    const scrollLeft = containerRef.current.scrollLeft
+    const containerWidth = containerRef.current.offsetWidth
+
+    if (scrollLeft % containerWidth === 0) {
+      imageIndex.current = scrollLeft / containerWidth
+    }
+  }
+
+  const checkAndUpdateCarousel = () => {
+    handleScroll()
+    updateScrollPosition()
+  }
+
   const advanceIndex = () => {
     if (imageIndex.current < scrollRef.current.childElementCount - 1) {
       imageIndex.current += 1
@@ -219,6 +233,20 @@ export const Carousel = () => {
     decreaseIndex()
   }
 
+  const startAutoAdvance = () => {
+    if (!showPie && !intervalStarted.current) {
+      const prefersReducedMotion = matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches
+
+      if (!prefersReducedMotion) {
+        autoUpdateID.current = setInterval(advanceIndex, 5000)
+        intervalStarted.current = true
+        setShowPie(true)
+      }
+    }
+  }
+
   const stopAutoAdvance = () => {
     if (autoUpdateID.current) {
       clearInterval(autoUpdateID.current)
@@ -238,52 +266,20 @@ export const Carousel = () => {
     }
   }
 
-  const handlePointer = () => {
-    stopAutoAdvance()
-  }
-
-  const handleScroll = () => {
-    const scrollLeft = containerRef.current.scrollLeft
-    const containerWidth = containerRef.current.offsetWidth
-
-    if (scrollLeft % containerWidth === 0) {
-      imageIndex.current = scrollLeft / containerWidth
-    }
-  }
-
-  const startInterval = () => {
-    if (!showPie && !intervalStarted.current) {
-      const prefersReducedMotion = matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches
-
-      if (!prefersReducedMotion) {
-        autoUpdateID.current = setInterval(advanceIndex, 5000)
-        intervalStarted.current = true
-        setShowPie(true)
-      }
-    }
-  }
-
-  useEffect(() => {
-    handleScroll()
-    updateScrollPosition()
-    addEventListener("resize", updateScrollPosition)
-
-    return () => {
-      clearInterval(autoUpdateID.current as NodeJS.Timer)
-      removeEventListener("resize", updateScrollPosition)
-    }
-  }, [])
-
   const handleKeyUp = (e: KeyboardEvent) => {
     if (e.key === "ArrowLeft") handleBackward()
     else if (e.key === "ArrowRight") handleForward()
   }
 
   useEffect(() => {
+    checkAndUpdateCarousel()
+    addEventListener("resize", updateScrollPosition)
+    addEventListener("focus", checkAndUpdateCarousel)
     addEventListener("keyup", handleKeyUp)
     return () => {
+      clearInterval(autoUpdateID.current as NodeJS.Timer)
+      removeEventListener("resize", updateScrollPosition)
+      removeEventListener("focus", checkAndUpdateCarousel)
       removeEventListener("keyup", handleKeyUp)
     }
   }, [])
@@ -297,7 +293,7 @@ export const Carousel = () => {
             ref={containerRef}
             onWheel={handleWheel}
             onScroll={handleScroll}
-            onPointerDown={handlePointer}
+            onPointerDown={stopAutoAdvance}
           >
             <ScrollArea ref={scrollRef} imageCount={4}>
               <Figure>
@@ -311,7 +307,7 @@ export const Carousel = () => {
                   loading="eager"
                   layout="constrained"
                   style={{ maxHeight: "70vh" }}
-                  onLoad={startInterval}
+                  onLoad={startAutoAdvance}
                   width={1000}
                 />
               </Figure>
@@ -326,7 +322,7 @@ export const Carousel = () => {
                   loading="eager"
                   layout="constrained"
                   style={{ maxHeight: "70vh" }}
-                  onLoad={startInterval}
+                  onLoad={startAutoAdvance}
                   width={1000}
                 />
               </Figure>
@@ -341,7 +337,7 @@ export const Carousel = () => {
                   loading="eager"
                   layout="constrained"
                   style={{ maxHeight: "70vh" }}
-                  onLoad={startInterval}
+                  onLoad={startAutoAdvance}
                   width={1000}
                 />
               </Figure>
@@ -356,7 +352,7 @@ export const Carousel = () => {
                   loading="eager"
                   layout="constrained"
                   style={{ maxHeight: "70vh" }}
-                  onLoad={startInterval}
+                  onLoad={startAutoAdvance}
                   width={1000}
                 />
               </Figure>
