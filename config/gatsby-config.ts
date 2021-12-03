@@ -50,7 +50,6 @@ const config: GatsbyConfig = {
     //     },
     //   },
     // },
-    `gatsby-plugin-gatsby-cloud`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-preact`,
