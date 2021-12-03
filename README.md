@@ -1,6 +1,6 @@
-<h1 align="center">
-  K:Port
-</h1>
+![K:Port timber structure, integrated lighting and photovoltaic roof panels](./src/images/other/banner.jpg)
+
+# K:Port®
 
 ### Low carbon, multi-modal transport hub from Hewitt Studios LLP
 
