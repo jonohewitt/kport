@@ -1,4 +1,4 @@
-![K:Port timber structure, integrated lighting and photovoltaic roof panels](./src/images/other/banner.jpg)
+![K:Port timber structure, integrated lighting and photovoltaic roof panels](./src/images/other/gh-banner.jpg)
 
 # K:Port®
 
