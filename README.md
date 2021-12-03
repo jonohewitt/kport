@@ -16,4 +16,11 @@ Visit the site: [https://kport.co.uk](https://kport.co.uk)
 
 ---
 
-The website source code is released here under the MIT license, however the K:Port® concept and design, as well as all website contents including images, are copyright of Hewitt Studios LLP. K:Port® is a trademarked and registered design.
+The website source code is released here under the MIT license, however the K:Port® concept and design, as well as all website contents including images, are copyright of Hewitt Studios LLP. 
+
+K:Port® is a trademarked and registered design.
+
+---
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2aa63015-b06b-4b4a-b732-8abb812ca6d0/deploy-status)](https://app.netlify.com/sites/fervent-heyrovsky-3ce91d/deploys) 
+
