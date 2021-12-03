@@ -48,7 +48,7 @@
   "keywords": [
     "K:Port"
   ],
-  "license": "0BSD",
+  "license": "apache-2.0",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop -H=0.0.0.0",
