@@ -20,12 +20,12 @@ interface ReducerAction {
   payload?: ThemeName
 }
 
-interface Context {
+interface GlobalContext {
   state: State
   dispatch: Dispatch<ReducerAction>
 }
 
-const GlobalState = createContext({} as Context)
+const GlobalState = createContext({} as GlobalContext)
 
 export const GlobalProvider = ({ children }: { children: any }) => {
   const initialState: State = {
