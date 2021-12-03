@@ -13,3 +13,7 @@ Designed with an emphasis on accessibility, performance and responsive scaling a
 Built using GatsbyJS, Typescript and Styled-Components, hosted with Netlify.
 
 Visit the site: [https://kport.co.uk](https://kport.co.uk)
+
+---
+
+The website source code is released here under the MIT license, however the K:Port® concept and design, as well as all website contents including images, are copyright of Hewitt Studios LLP. K:Port® is a trademarked and registered design.
