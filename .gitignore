@@ -67,3 +67,14 @@ yarn-error.log
 .pnp.js
 # Yarn Integrity file
 .yarn-integrity
+
+########
+
+#Test files
+
+########
+
+test.tsx
+test.jsx
+test.ts
+test.js
