@@ -249,6 +249,12 @@ export const Carousel = () => {
 
   const stopAutoAdvance = () => {
     if (autoUpdateID.current) {
+      containerRef.current.removeEventListener("wheel", handleWheel, {
+        passive: true,
+      })
+
+      removeEventListener("focus", checkAndUpdateCarousel)
+
       clearInterval(autoUpdateID.current)
       autoUpdateID.current = undefined
       setShowPie(false)
@@ -276,11 +282,26 @@ export const Carousel = () => {
     addEventListener("resize", updateScrollPosition)
     addEventListener("focus", checkAndUpdateCarousel)
     addEventListener("keyup", handleKeyUp)
+    containerRef.current.addEventListener("wheel", handleWheel, {
+      passive: true,
+    })
+    containerRef.current.addEventListener("scroll", handleScroll, {
+      passive: true,
+    })
     return () => {
       clearInterval(autoUpdateID.current as NodeJS.Timer)
       removeEventListener("resize", updateScrollPosition)
-      removeEventListener("focus", checkAndUpdateCarousel)
+
       removeEventListener("keyup", handleKeyUp)
+      if (autoUpdateID.current) {
+        containerRef.current.removeEventListener("wheel", handleWheel, {
+          passive: true,
+        })
+        containerRef.current.removeEventListener("scroll", handleScroll, {
+          passive: true,
+        })
+        removeEventListener("focus", checkAndUpdateCarousel)
+      }
     }
   }, [])
 
@@ -291,8 +312,6 @@ export const Carousel = () => {
           <CarouselWrapper
             tabIndex={0}
             ref={containerRef}
-            onWheel={handleWheel}
-            onScroll={handleScroll}
             onPointerDown={stopAutoAdvance}
           >
             <ScrollArea ref={scrollRef} imageCount={4}>
