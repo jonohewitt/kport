@@ -1,10 +1,9 @@
-import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import React from "react"
 import styled from "styled-components"
-import { useGlobalState } from "../context/globalState"
 import { ContactButton, ContactWrapper } from "./contactButton"
 import { handleClick, navIDs } from "./nav"
+import { ToggleSwitch } from "./toggleSwitch"
 
 const Container = styled.div`
   width: 90%;
@@ -75,7 +74,7 @@ const Disclaimer = styled.div`
     width: 50%;
   }
   p {
-    margin-top: 20px;
+    margin-top: 15px;
     line-height: 1.4;
     font-size: 14px;
   }
@@ -181,10 +180,6 @@ const upArrowSVG = (
 )
 
 export const Footer = () => {
-  const {
-    state: { theme },
-    dispatch,
-  } = useGlobalState()
   return (
     <Wrapper>
       <Container>
@@ -193,7 +188,7 @@ export const Footer = () => {
             <a
               href="https://www.linkedin.com/company/hewitt-studios"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               aria-label="Visit our LinkedIn account"
             >
               {linkedInSVG}
@@ -203,7 +198,7 @@ export const Footer = () => {
             <a
               href="https://www.instagram.com/hewittstudios/"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               aria-label="Visit our Instagram account"
             >
               {instaSVG}
@@ -213,7 +208,7 @@ export const Footer = () => {
             <a
               href="https://www.twitter.com/hewittstudios"
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               aria-label="Visit our Twitter account"
             >
               {twitterSVG}
@@ -223,20 +218,6 @@ export const Footer = () => {
         <Divider />
         <FooterNav aria-label="Footer navigation">
           <FooterNavList>
-            {process.env.NODE_ENV === "development" && (
-              <li>
-                <FooterNavLink
-                  onClick={() =>
-                    dispatch({
-                      type: "setTheme",
-                      payload: theme === "dark" ? "light" : "dark",
-                    })
-                  }
-                >
-                  Switch to {theme === "dark" ? "Light" : "Dark"} Theme
-                </FooterNavLink>
-              </li>
-            )}
             {navIDs.map(option => (
               <li key={option.name}>
                 <FooterNavLink onClick={e => handleClick(e, option)}>
@@ -256,6 +237,7 @@ export const Footer = () => {
           </p>
           <p>K:Port® is a trademarked and registered design.</p>
           <p> All rights reserved.</p>
+          <ToggleSwitch />
         </Disclaimer>
         <DevelopedBy
           href="https://www.hewittstudios.co.uk/"
