@@ -23,7 +23,7 @@ export const lightTheme = {
   linkUnderline: "rgba(28, 130, 140, .22)",
   linkHover: "rgba(28, 130, 140, 0.3)",
   linkActive: "rgba(28, 130, 140, .5)",
-  gallery: "#fff",
+  gallery: "#ddd",
 }
 
 export const darkTheme: Theme = {
@@ -44,5 +44,5 @@ export const darkTheme: Theme = {
   linkUnderline: "rgba(168, 249, 214, 0.35)",
   linkHover: "rgba(168, 249, 214, 0.45)",
   linkActive: "rgba(168, 249, 214, 0.6)",
-  gallery: "#000",
+  gallery: "#060606",
 }
