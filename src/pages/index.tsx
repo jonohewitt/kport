@@ -7,6 +7,7 @@ import { ContactButton } from "../components/contactButton"
 import { Partners } from "../components/partners"
 import { Features } from "../components/features"
 import { Carousel } from "../components/carousel"
+import { Media } from "../components/media"
 
 const rightArrowSVG = (
   <svg
@@ -98,32 +99,57 @@ const TextSectionContent = styled.div`
   }
 `
 
-const ArrowLink = styled.a`
+const HighlightUnderline = styled.span`
+  white-space: nowrap;
+  color: ${({ theme }) => theme.colourHighlight};
   display: inline-block;
-  font-size: 16px;
-  border-bottom: none;
+  /* border-bottom: 7px solid #3d66c645; */
+`
+
+const StyledExternalLink = styled.a`
   color: ${({ theme }) => theme.text};
   text-decoration: none;
+  font-size: 18px;
+  border-bottom: 4px solid ${({ theme }) => theme.linkUnderline};
   font-weight: 500;
-  margin-top: 40px;
-  .underline {
-    border-bottom: 1px solid ${({ theme }) => theme.text};
-  }
+  transition: 0.2s;
   svg {
     position: relative;
-    top: 3px;
+    top: 2px;
     left: 0;
     transition: 0.2s;
   }
+
   @media (hover: hover) {
     :hover {
-      .underline {
-        border-bottom: 2px solid ${({ theme }) => theme.text};
-      }
+      border-bottom: 4px solid ${({ theme }) => theme.linkHover};
       svg {
-        left: 6px;
+        transform: rotate(-45deg);
       }
     }
+  }
+
+  :active {
+    border-bottom: 4px solid ${({ theme }) => theme.linkActive};
+    svg {
+      top: 0px;
+      left: 2px;
+    }
+  }
+`
+
+const StyleLink = styled.a`
+  color: ${({ theme }) => theme.text};
+  text-decoration: none;
+  font-size: 18px;
+  border-bottom: none;
+  border-bottom: 4px solid ${({ theme }) => theme.linkUnderline};
+  font-weight: 500;
+  svg {
+    position: relative;
+    top: 2px;
+    left: 0;
+    transition: 0.2s;
   }
 `
 
@@ -141,6 +167,40 @@ const HeaderWrapper = styled.div`
     flex-direction: column-reverse;
   }
 `
+
+const InnovativeSpan = styled.span`
+  @media (min-width: 500px) {
+    white-space: nowrap;
+  }
+`
+
+type SafeExternalLink = `${
+  | "https://www.hewittstudios.co.uk"
+  | "https://hewittstudios.co.uk"}${string}`
+
+interface ArrowLink {
+  children: string
+  href: SafeExternalLink
+}
+
+const ArrowLink = ({ children, href }: ArrowLink) => {
+  const wordArray = children.split(" ")
+  const finalWord = wordArray.pop()
+  const secureURL = new RegExp("^https://www.hewittstudios.co.uk.*").test(href)
+
+  let rel = "noopener"
+  if (!secureURL || process.env.NODE_ENV === "development") rel += " noreferrer"
+  return (
+    /* eslint-disable react/jsx-no-target-blank */
+    <StyledExternalLink href={href} target="_blank" rel={rel}>
+      {wordArray.join(" ")}{" "}
+      <span className="no-break">
+        {finalWord} {rightArrowSVG}
+      </span>
+    </StyledExternalLink>
+    /* eslint-enable react/jsx-no-target-blank */
+  )
+}
 
 const IndexPage: FC<PageProps> = () => {
   return (
@@ -168,6 +228,7 @@ const IndexPage: FC<PageProps> = () => {
         <Carousel />
       </HeaderWrapper>
 
+      {/* <Media /> */}
       <Features />
 
       <Figure>
@@ -190,7 +251,7 @@ const IndexPage: FC<PageProps> = () => {
             K:Port® is capable of rapid implementation, with an established
             supply chain ready to deliver modular, prefabricated components on
             site to be constructed in{" "}
-            <span className="no-break">just 3 weeks.</span>
+            <HighlightUnderline>just 3 weeks.</HighlightUnderline>
           </h2>
           <p>
             Hewitt Studios LLP have a developed kit of parts available to fit
@@ -203,7 +264,53 @@ const IndexPage: FC<PageProps> = () => {
             and ultimately utilised as biomass fuel, ensuring a long-term
             sustainable legacy.
           </p>
-          {/* <ContactButton /> */}
+        </TextSectionContent>
+      </TextSection>
+
+      <Figure>
+        <StaticImage
+          src="../images/content/kport-concept.jpg"
+          alt="Rendered graphic of a K:Port concept hub including community spaces"
+          layout="fullWidth"
+          placeholder="blurred"
+          style={{ minHeight: "30vh", maxHeight: "60vh" }}
+          imgStyle={{ objectPosition: "right 90%" }}
+        />
+        <FullWidthCaption>Concept image</FullWidthCaption>
+      </Figure>
+
+      <TextSection>
+        <TextSectionContent>
+          <h2>
+            K:Port® has been developed by Hewitt Studios LLP{" "}
+            <InnovativeSpan>- an innovative</InnovativeSpan> multi-disciplinary
+            studio specialising in extraordinary, sustainable environments which{" "}
+            <HighlightUnderline>inspire change.</HighlightUnderline>
+          </h2>
+          <p>
+            Hewitt Studios LLP have determinedly pursued an accessible and
+            design-led approach to sustainable architecture, placing
+            environmental technologies fundamentally at the heart of each of our
+            projects.{" "}
+            <ArrowLink href="https://www.hewittstudios.co.uk/awards/">
+              Our work has been internationally recognised
+            </ArrowLink>{" "}
+            and we were named the UK’s “Sustainable Architect of the Year” in
+            2014 for our pioneering work across the sector.
+          </p>
+          <p>
+            K:Port® is underpinned by a full range of urban design and
+            architectural consultancy services offered by Hewitt Studios LLP.
+            These include business planning, research and feasibility studies,
+            site selection, building control, public consultation, regulatory
+            approvals, passivhaus certified design, project management and
+            procurement.
+          </p>
+
+          <ArrowLink href="https://www.hewittstudios.co.uk/">
+            Visit the Hewitt Studios LLP website to learn more about our
+            practice
+          </ArrowLink>
         </TextSectionContent>
       </TextSection>
 
@@ -224,65 +331,11 @@ const IndexPage: FC<PageProps> = () => {
           }}
           backgroundColor="#000"
         />
-        <FullWidthCaption>Development model</FullWidthCaption>
-      </Figure>
-      <TextSection>
-        <TextSectionContent>
-          <h2>
-            K:Port® has been developed by Hewitt Studios LLP - an innovative
-            multi-disciplinary studio specialising in extraordinary, sustainable
-            environments which <span className="no-break">inspire change.</span>
-          </h2>
-          <p>
-            Hewitt Studios LLP have determinedly pursued an accessible and
-            design-led approach to sustainable architecture, placing
-            environmental technologies fundamentally at the heart of each of our
-            projects.{" "}
-            <a
-              href="https://www.hewittstudios.co.uk/awards/"
-              target="_blank"
-              rel="noopener"
-            >
-              Our work has been internationally recognised
-            </a>{" "}
-            and we were named the UK’s “Sustainable Architect of the Year” in
-            2014 for our pioneering work across the sector.
-          </p>
-          <p>
-            K:Port® is underpinned by a full range of urban design and
-            architectural consultancy services offered by Hewitt Studios LLP.
-            These include business planning, research and feasibility studies,
-            site selection, building control, public consultation, regulatory
-            approvals, passivhaus certified design, project management and
-            procurement.
-          </p>
-
-          <ArrowLink
-            href="https://www.hewittstudios.co.uk/"
-            target="_blank"
-            rel="noopener"
-            className="text-link"
-          >
-            <span className="underline">
-              Visit the Hewitt Studios LLP website to learn more about our{" "}
-              <span className="no-break">practice {rightArrowSVG}</span>
-            </span>
-          </ArrowLink>
-        </TextSectionContent>
-      </TextSection>
-      <Figure>
-        <StaticImage
-          src="../images/content/kport-concept.jpg"
-          alt="Rendered graphic of a K:Port concept hub including community spaces"
-          layout="fullWidth"
-          placeholder="blurred"
-          style={{ minHeight: "30vh", maxHeight: "60vh" }}
-          imgStyle={{ objectPosition: "right 90%" }}
-        />
         <FullWidthCaption background="var(--partners)">
-          Concept image
+          Development model
         </FullWidthCaption>
       </Figure>
+
       <Partners />
     </>
   )
