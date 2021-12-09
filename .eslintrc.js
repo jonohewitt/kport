@@ -19,4 +19,10 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint"],
   rules: {},
+  settings: {
+    linkComponents: [
+      "Hyperlink",
+      { name: "StyledExternalLink", linkAttribute: "href" },
+    ],
+  },
 }
