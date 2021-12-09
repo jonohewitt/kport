@@ -2,7 +2,7 @@ import React, {
   createContext,
   Dispatch,
   useContext,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useReducer,
 } from "react"
@@ -33,6 +33,7 @@ export const GlobalProvider = ({ children }: { children: any }) => {
   }
 
   const reducer = (state: State, action: ReducerAction) => {
+    const root = document.documentElement
     switch (action.type) {
       case "setInitialTheme": {
         return {
@@ -44,7 +45,7 @@ export const GlobalProvider = ({ children }: { children: any }) => {
       case "setTheme": {
         const setCSSVariables = (theme: Theme) => {
           Object.entries(theme).forEach(([name, value]) =>
-            document.documentElement.style.setProperty(`--${name}`, value)
+            root.style.setProperty(`--${name}`, value)
           )
         }
 
@@ -57,7 +58,10 @@ export const GlobalProvider = ({ children }: { children: any }) => {
             break
         }
 
-        if (action.payload) localStorage.setItem("theme", action.payload)
+        if (action.payload) {
+          localStorage.setItem("theme", action.payload)
+          root.setAttribute("theme", action.payload)
+        }
 
         return { ...state, theme: action.payload }
       }
@@ -79,7 +83,7 @@ export const GlobalProvider = ({ children }: { children: any }) => {
     dispatch: ({ type, payload }: ReducerAction) => void
   ] = useReducer(reducer, initialState)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const theme: ThemeName = document.documentElement.attributes.theme?.value
     dispatch({ type: "setInitialTheme", payload: theme })
   }, [])
