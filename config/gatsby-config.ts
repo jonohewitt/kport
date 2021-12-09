@@ -18,7 +18,7 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "logos",
+        name: "partnerLogos",
         path: `./src/images/partnerLogos`,
       },
     },
@@ -42,14 +42,14 @@ const config: GatsbyConfig = {
     //     path: `./src/posts`,
     //   },
     // },
-    // {
-    //   resolve: "gatsby-plugin-react-svg",
-    //   options: {
-    //     rule: {
-    //       include: /images/,
-    //     },
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /images\/.*\.svg/,
+        },
+      },
+    },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-preact`,

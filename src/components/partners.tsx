@@ -17,7 +17,7 @@ const Section = styled.section`
   background: ${props => props.theme.partners};
   padding: 60px 0;
   h2 {
-    opacity: 0.8;
+    opacity: 0.9;
     width: 90%;
     max-width: 800px;
     margin: 0 auto 25px auto;
@@ -57,7 +57,7 @@ const PartnerList = styled.ul<{ darkMode: boolean }>`
   margin: 4vw;
   box-shadow: 0px 4px 20px #0003;
 
-  ${props => props.darkMode && "filter: brightness(0.9);"};
+  ${props => props.darkMode && "filter: brightness(0.97);"};
 `
 
 interface Logo extends FileNode {
@@ -66,8 +66,8 @@ interface Logo extends FileNode {
 
 export const Partners = () => {
   const logos: Logo[] = useStaticQuery(graphql`
-    query MyQuery {
-      allFile(filter: { sourceInstanceName: { eq: "logos" } }) {
+    query PartnersQuery {
+      allFile(filter: { sourceInstanceName: { eq: "partnerLogos" } }) {
         nodes {
           name
           childImageSharp {
