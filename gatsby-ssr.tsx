@@ -2,17 +2,19 @@ import React from "react"
 import { darkTheme, lightTheme } from "./src/theme/themeVariables"
 import { Layout } from "./src/components/layout"
 import { GlobalProvider } from "./src/context/globalState"
+import type { GatsbySSR } from "gatsby"
 
-// Unfortunately this extremely hacky work around seems to be the only way
+// Unfortunately this work around seems to be the only way
 // to load in dark mode without flickering from light mode first
 
 // Thanks to Josh W Comeau for sharing his solution that I've adapted below
 // https://www.joshwcomeau.com/react/dark-mode/
 
 const ScriptInjection = () => {
-  let codeToRunOnClient = `(() => {
+  const codeToRunOnClient = `(() => {
     const darkTheme = ${JSON.stringify(darkTheme)}
     const lightTheme = ${JSON.stringify(lightTheme)}
+    const root = document.documentElement
 
     const themePreviouslySet = localStorage.getItem("theme")
     const prefersDark = matchMedia?.("(prefers-color-scheme: dark)").matches
@@ -43,26 +45,27 @@ const ScriptInjection = () => {
     Object.entries(theme).forEach(
       ([key, value]) => {
         const cssVarName = \`--\${key}\`
-        document.documentElement.style.setProperty(cssVarName, value)
+        root.style.setProperty(cssVarName, value)
       }
     )
+
+    root.setAttribute("theme", themeName)
+
   })()`
   // eslint-disable-next-line react/no-danger
   return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />
 }
 
-export const onRenderBody = ({
+export const onRenderBody: GatsbySSR["onRenderBody"] = ({
   setPreBodyComponents,
-}: {
-  setPreBodyComponents: any
 }) => {
-  setPreBodyComponents(<ScriptInjection key="🔑" />)
+  setPreBodyComponents([<ScriptInjection key="🔑" />])
 }
 
-export const wrapRootElement = ({ element }: { element: any }) => (
+export const wrapRootElement: GatsbySSR["wrapRootElement"] = ({ element }) => (
   <GlobalProvider>{element}</GlobalProvider>
 )
 
-export const wrapPageElement = ({ element }: { element: any }) => (
+export const wrapPageElement: GatsbySSR["wrapPageElement"] = ({ element }) => (
   <Layout>{element}</Layout>
 )
