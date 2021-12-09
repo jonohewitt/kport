@@ -207,10 +207,13 @@ export const Features = () => {
             <p>
               Our concept for K:Port® derives from the Japanese notion of
               “Komorebi”; the dappled light which occurs when sunlight shines
-              through the leaves of a tree. The essence of the tree is apparent
-              throughout K:Port®, from the form of the canopy itself and the
-              timbers which make up its structure, to the collection and use of
-              rainwater and sunlight via the solar PV surface.
+              through the leaves of a tree.
+            </p>
+            <p>
+              The essence of the tree is apparent throughout K:Port®, from the
+              form of the canopy itself and the timbers which make up its
+              structure, to the collection and use of rainwater and sunlight via
+              the solar PV surface.
             </p>
           </FeatureText>
         </FeatureSection>
