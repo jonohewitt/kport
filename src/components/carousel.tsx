@@ -1,11 +1,5 @@
 import { StaticImage } from "gatsby-plugin-image"
-import React, {
-  MutableRefObject,
-  useEffect,
-  useRef,
-  useState,
-  WheelEvent,
-} from "react"
+import React, { MutableRefObject, useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { PieCountdown } from "./pie"
 
@@ -58,24 +52,28 @@ const BackButton = styled(ForwardButton)`
   }
 `
 
-const CarouselBackground = styled.div`
-  display: contents;
-  background: ${({ theme }) => theme.feature};
-`
-
-const AnotherDiv = styled.div`
-  background: ${({ theme }) => theme.feature};
-
-  @media (min-width: 1000px) {
-    position: sticky;
-    top: 35px;
+const Container = styled.div`
+  background: ${({ theme }) => theme.gallery};
+  width: 100%;
+  position: relative;
+  @media (min-width: 601px) {
+    ::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 35px;
+      bottom: 0;
+      left: 0;
+      background: ${({ theme }) => theme.feature};
+    }
   }
 `
 
 const CarouselContainer = styled.div`
   position: relative;
   background: ${({ theme }) => theme.background};
-  @media (min-width: 600px) {
+
+  @media (min-width: 601px) {
     max-width: 1000px;
     margin: 0 auto;
     top: -35px;
@@ -249,9 +247,7 @@ export const Carousel = () => {
 
   const stopAutoAdvance = () => {
     if (autoUpdateID.current) {
-      containerRef.current.removeEventListener("wheel", handleWheel, {
-        passive: true,
-      })
+      containerRef.current.removeEventListener("wheel", handleWheel)
 
       removeEventListener("focus", checkAndUpdateCarousel)
 
@@ -294,100 +290,94 @@ export const Carousel = () => {
 
       removeEventListener("keyup", handleKeyUp)
       if (autoUpdateID.current) {
-        containerRef.current.removeEventListener("wheel", handleWheel, {
-          passive: true,
-        })
-        containerRef.current.removeEventListener("scroll", handleScroll, {
-          passive: true,
-        })
+        containerRef.current.removeEventListener("wheel", handleWheel)
+        containerRef.current.removeEventListener("scroll", handleScroll)
         removeEventListener("focus", checkAndUpdateCarousel)
       }
     }
   }, [])
 
   return (
-    <CarouselBackground>
-      <AnotherDiv>
-        <CarouselContainer>
-          <CarouselWrapper
-            tabIndex={0}
-            ref={containerRef}
-            onPointerDown={stopAutoAdvance}
-          >
-            <ScrollArea ref={scrollRef} imageCount={4}>
-              <Figure>
-                <FigCaption showPie={showPie}>
-                  <span className="bold">Client:</span> North Somerset Council -
-                  Portishead Marina
-                </FigCaption>
-                <StaticImage
-                  src="../images/content/kport-bluesky.jpg"
-                  alt="Detail of the K:Port timber structure with photovoltaic panels casting shadows"
-                  loading="eager"
-                  layout="constrained"
-                  style={{ maxHeight: "70vh" }}
-                  onLoad={startAutoAdvance}
-                  width={1000}
-                />
-              </Figure>
-              <Figure>
-                <FigCaption showPie={showPie}>
-                  <span className="bold">Client:</span> Transport for London -
-                  Woolwich, London
-                </FigCaption>
-                <StaticImage
-                  src="../images/content/kport-1.jpg"
-                  alt="Detail of the K:Port timber structure with integrated LED lighting panels"
-                  loading="eager"
-                  layout="constrained"
-                  style={{ maxHeight: "70vh" }}
-                  onLoad={startAutoAdvance}
-                  width={1000}
-                />
-              </Figure>
-              <Figure>
-                <FigCaption showPie={showPie}>
-                  <span className="bold">Client:</span> Transport for London -
-                  Woolwich, London
-                </FigCaption>
-                <StaticImage
-                  src="../images/content/kport-2.jpg"
-                  alt="Detail of the K:Port timber structure, photovoltaic panels and integrated lighting"
-                  loading="eager"
-                  layout="constrained"
-                  style={{ maxHeight: "70vh" }}
-                  onLoad={startAutoAdvance}
-                  width={1000}
-                />
-              </Figure>
-              <Figure>
-                <FigCaption showPie={showPie}>
-                  <span className="bold">Client:</span> Transport for London -
-                  Woolwich, London
-                </FigCaption>
-                <StaticImage
-                  src="../images/content/kport-3.jpg"
-                  alt="Detail of the K:Port timber structure, photovoltaic panels and rain water drainage chains"
-                  loading="eager"
-                  layout="constrained"
-                  style={{ maxHeight: "70vh" }}
-                  onLoad={startAutoAdvance}
-                  width={1000}
-                />
-              </Figure>
-            </ScrollArea>
-          </CarouselWrapper>
-          <ControlButtons>
-            <BackButton aria-label="Previous image" onClick={handleBackward}>
-              {nextArrow}
-            </BackButton>
-            <ForwardButton aria-label="Next image" onClick={handleForward}>
-              {nextArrow}
-            </ForwardButton>
-          </ControlButtons>
-          {showPie && <PieCountdown refreshPie={refreshPie} />}
-        </CarouselContainer>
-      </AnotherDiv>
-    </CarouselBackground>
+    <Container>
+      <CarouselContainer>
+        <CarouselWrapper
+          tabIndex={0}
+          ref={containerRef}
+          onPointerDown={stopAutoAdvance}
+        >
+          <ScrollArea ref={scrollRef} imageCount={4}>
+            <Figure>
+              <FigCaption showPie={showPie}>
+                <span className="bold">Client:</span> North Somerset Council -
+                Portishead Marina
+              </FigCaption>
+              <StaticImage
+                src="../images/content/kport-bluesky.jpg"
+                alt="Detail of the K:Port timber structure with photovoltaic panels casting shadows"
+                loading="eager"
+                layout="constrained"
+                style={{ maxHeight: "70vh" }}
+                onLoad={startAutoAdvance}
+                width={1000}
+              />
+            </Figure>
+            <Figure>
+              <FigCaption showPie={showPie}>
+                <span className="bold">Client:</span> Transport for London -
+                Woolwich, London
+              </FigCaption>
+              <StaticImage
+                src="../images/content/kport-1.jpg"
+                alt="Detail of the K:Port timber structure with integrated LED lighting panels"
+                loading="eager"
+                layout="constrained"
+                style={{ maxHeight: "70vh" }}
+                onLoad={startAutoAdvance}
+                width={1000}
+              />
+            </Figure>
+            <Figure>
+              <FigCaption showPie={showPie}>
+                <span className="bold">Client:</span> Transport for London -
+                Woolwich, London
+              </FigCaption>
+              <StaticImage
+                src="../images/content/kport-2.jpg"
+                alt="Detail of the K:Port timber structure, photovoltaic panels and integrated lighting"
+                loading="eager"
+                layout="constrained"
+                style={{ maxHeight: "70vh" }}
+                onLoad={startAutoAdvance}
+                width={1000}
+              />
+            </Figure>
+            <Figure>
+              <FigCaption showPie={showPie}>
+                <span className="bold">Client:</span> Transport for London -
+                Woolwich, London
+              </FigCaption>
+              <StaticImage
+                src="../images/content/kport-3.jpg"
+                alt="Detail of the K:Port timber structure, photovoltaic panels and rain water drainage chains"
+                loading="eager"
+                layout="constrained"
+                style={{ maxHeight: "70vh" }}
+                onLoad={startAutoAdvance}
+                width={1000}
+              />
+            </Figure>
+          </ScrollArea>
+        </CarouselWrapper>
+        <ControlButtons>
+          <BackButton aria-label="Previous image" onClick={handleBackward}>
+            {nextArrow}
+          </BackButton>
+          <ForwardButton aria-label="Next image" onClick={handleForward}>
+            {nextArrow}
+          </ForwardButton>
+        </ControlButtons>
+        {showPie && <PieCountdown refreshPie={refreshPie} />}
+      </CarouselContainer>
+    </Container>
   )
 }
