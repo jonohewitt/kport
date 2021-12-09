@@ -4,25 +4,46 @@ import { useGlobalState } from "../context/globalState"
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-import ArchDaily from "../images/mediaLogos/darkTheme/ArchDaily.svg"
+import ArchDailyDark from "../images/mediaLogos/darkTheme/ArchDaily.svg"
 // @ts-ignore
-import Archello from "../images/mediaLogos/darkTheme/Archello.svg"
+import ArchelloDark from "../images/mediaLogos/darkTheme/Archello.svg"
 // @ts-ignore
-import Architizer from "../images/mediaLogos/darkTheme/Architizer.svg"
+import ArchitizerDark from "../images/mediaLogos/darkTheme/Architizer.svg"
 // @ts-ignore
-import FleetLeasing from "../images/mediaLogos/darkTheme/FleetLeasing.svg"
+import FleetLeasingDark from "../images/mediaLogos/darkTheme/FleetLeasing.svg"
 // @ts-ignore
-import FutureVehicle from "../images/mediaLogos/darkTheme/FutureVehicle.svg"
+import FutureVehicleDark from "../images/mediaLogos/darkTheme/FutureVehicle.svg"
 // @ts-ignore
-import Holzmagazin from "../images/mediaLogos/darkTheme/Holzmagazin.svg"
+import HolzmagazinDark from "../images/mediaLogos/darkTheme/Holzmagazin.svg"
 // @ts-ignore
-import RAC from "../images/mediaLogos/darkTheme/RACFoundation.svg"
+import RACDark from "../images/mediaLogos/darkTheme/RACFoundation.svg"
 // @ts-ignore
-import TfL from "../images/mediaLogos/darkTheme/TfL.svg"
+import TfLDark from "../images/mediaLogos/darkTheme/TfL.svg"
 // @ts-ignore
-import Treehugger from "../images/mediaLogos/darkTheme/Treehugger.svg"
+import TreehuggerDark from "../images/mediaLogos/darkTheme/Treehugger.svg"
 // @ts-ignore
-import Zapmap from "../images/mediaLogos/darkTheme/Zapmap.svg"
+import ZapmapDark from "../images/mediaLogos/darkTheme/Zapmap.svg"
+
+// @ts-ignore
+import ArchDailyLight from "../images/mediaLogos/lightTheme/ArchDaily.svg"
+// @ts-ignore
+import ArchelloLight from "../images/mediaLogos/lightTheme/Archello.svg"
+// @ts-ignore
+import ArchitizerLight from "../images/mediaLogos/lightTheme/Architizer.svg"
+// @ts-ignore
+import FleetLeasingLight from "../images/mediaLogos/lightTheme/FleetLeasing.svg"
+// @ts-ignore
+import FutureVehicleLight from "../images/mediaLogos/lightTheme/FutureVehicle.svg"
+// @ts-ignore
+import HolzmagazinLight from "../images/mediaLogos/lightTheme/Holzmagazin.svg"
+// @ts-ignore
+import RACLight from "../images/mediaLogos/lightTheme/RACFoundation.svg"
+// @ts-ignore
+import TfLLight from "../images/mediaLogos/lightTheme/TfL.svg"
+// @ts-ignore
+import TreehuggerLight from "../images/mediaLogos/lightTheme/Treehugger.svg"
+// @ts-ignore
+import ZapmapLight from "../images/mediaLogos/lightTheme/Zapmap.svg"
 
 const PressAndFeatures = styled.section`
   background: ${({ theme }) => theme.feature};
@@ -116,7 +137,9 @@ const List = styled.ul`
 `
 
 export const Media = () => {
-  const { state } = useGlobalState()
+  const {
+    state: { theme },
+  } = useGlobalState()
 
   return (
     <PressAndFeatures>
@@ -124,36 +147,30 @@ export const Media = () => {
         <h2>Press & Features</h2>
         <ListWrapper>
           <List>
+            <li>{theme === "dark" ? <ArchDailyDark /> : <ArchDailyLight />}</li>
+            <li>{theme === "dark" ? <ArchelloDark /> : <ArchelloLight />}</li>
             <li>
-              <ArchDaily />
+              {theme === "dark" ? <ArchitizerDark /> : <ArchitizerLight />}
             </li>
             <li>
-              <Archello />
+              {theme === "dark" ? <FleetLeasingDark /> : <FleetLeasingLight />}
             </li>
             <li>
-              <Architizer />
+              {theme === "dark" ? (
+                <FutureVehicleDark />
+              ) : (
+                <FutureVehicleLight />
+              )}
             </li>
             <li>
-              <FleetLeasing />
+              {theme === "dark" ? <HolzmagazinDark /> : <HolzmagazinLight />}
             </li>
+            <li>{theme === "dark" ? <RACDark /> : <RACLight />}</li>
+            <li>{theme === "dark" ? <TfLDark /> : <TfLLight />}</li>
             <li>
-              <FutureVehicle />
+              {theme === "dark" ? <TreehuggerDark /> : <TreehuggerLight />}
             </li>
-            <li>
-              <Holzmagazin />
-            </li>
-            <li>
-              <RAC />
-            </li>
-            <li>
-              <TfL />
-            </li>
-            <li>
-              <Treehugger />
-            </li>
-            <li>
-              <Zapmap />
-            </li>
+            <li>{theme === "dark" ? <ZapmapDark /> : <ZapmapLight />}</li>
           </List>
         </ListWrapper>
       </Container>
