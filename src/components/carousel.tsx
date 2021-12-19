@@ -89,6 +89,17 @@ const CarouselContainer = styled.div`
 
 const CarouselWrapper = styled.div`
   overflow: scroll hidden;
+  @media (max-width: 600px) {
+    scrollbar-color: ${({ theme }) => theme.lowContrast}
+      ${({ theme }) => theme.background};
+  }
+  scrollbar-color: ${({ theme }) => theme.lowContrast}
+    ${({ theme }) => theme.feature};
+  @media (min-width: 1100px) {
+    scrollbar-color: ${({ theme }) => theme.lowContrast}
+      ${({ theme }) => theme.gallery};
+  }
+
   @supports (contain: paint) {
     scroll-snap-type: x mandatory;
   }
