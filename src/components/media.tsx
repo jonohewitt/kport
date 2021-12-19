@@ -60,10 +60,8 @@ const Container = styled.div`
   @media (max-width: 700px) {
     width: 90%;
     padding-left: 10%;
-    padding: 50px 0 70px 10%;
+    padding: 60px 0 30px 10%;
     background: ${({ theme }) => theme.feature};
-    background: black;
-    margin-top: 40px;
   }
 
   h2 {
@@ -80,13 +78,28 @@ const Container = styled.div`
   }
 `
 
-const ListWrapper = styled.div`
+const ScrollContainer = styled.div`
   margin: 0 40px;
+  border-radius: 10px;
+  background: ${({ theme }) => theme.media};
+  box-shadow: 0px 4px 20px #0003;
+  border: 2px solid ${({ theme }) => theme.mediaOutline};
+
+  @media (max-width: 700px) {
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    border-right: 0;
+    border-radius: 10px 0 0 10px;
+  }
+`
+
+const ListWrapper = styled.div`
   position: relative;
   border-radius: 10px;
 
   @media (max-width: 700px) {
     overflow-x: scroll;
+    scrollbar-color: ${({ theme }) => theme.lowContrast} transparent;
     border-radius: 10px 0 0 10px;
     margin: 0;
     /* border: 1px solid ${({ theme }) => theme.lowContrast}; */
@@ -99,41 +112,36 @@ const List = styled.ul`
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
-
-  background: ${({ theme }) => theme.gallery};
-  border-radius: 10px;
   padding: 50px 0;
   gap: 30px 0;
   margin: 0 auto;
 
   @media (max-width: 700px) {
+    width: 800px;
+    padding-right: 30px;
+    padding-bottom: 40px;
+  }
+
+  @media (max-width: 500px) {
     width: 650px;
     padding-right: 30px;
-    background: ${({ theme }) => theme.feature};
+    padding-bottom: 40px;
   }
 
   li {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
     width: 90px;
-    margin: 0 40px;
-
+    height: 45px;
+    margin: 0 35px;
     @media (max-width: 700px) {
+      margin: 0 30px;
+    }
+    @media (max-width: 500px) {
       margin: 0 10px;
     }
   }
-
-  /* li {
-    margin: 0 50px;
-
-    :nth-last-child(5),
-    :nth-last-child(4),
-    :nth-last-child(3),
-    :nth-last-child(2),
-    :last-child {
-      margin: 0;
-    }
-  } */
 `
 
 export const Media = () => {
@@ -141,38 +149,93 @@ export const Media = () => {
     state: { theme },
   } = useGlobalState()
 
+  interface MediaOutlet {
+    DarkSVG: any
+    LightSVG: any
+    href: `https://${string}`
+    title: string
+  }
+
+  const MediaOutlet = ({ DarkSVG, LightSVG, href, title }: MediaOutlet) => {
+    return (
+      <li>
+        <a href={href} target="_blank" rel="noreferrer noopener" title={title}>
+          {theme === "dark" ? <DarkSVG /> : <LightSVG />}
+        </a>
+      </li>
+    )
+  }
+
   return (
     <PressAndFeatures>
       <Container>
         <h2>Press & Features</h2>
-        <ListWrapper>
-          <List>
-            <li>{theme === "dark" ? <ArchDailyDark /> : <ArchDailyLight />}</li>
-            <li>{theme === "dark" ? <ArchelloDark /> : <ArchelloLight />}</li>
-            <li>
-              {theme === "dark" ? <ArchitizerDark /> : <ArchitizerLight />}
-            </li>
-            <li>
-              {theme === "dark" ? <FleetLeasingDark /> : <FleetLeasingLight />}
-            </li>
-            <li>
-              {theme === "dark" ? (
-                <FutureVehicleDark />
-              ) : (
-                <FutureVehicleLight />
-              )}
-            </li>
-            <li>
-              {theme === "dark" ? <HolzmagazinDark /> : <HolzmagazinLight />}
-            </li>
-            <li>{theme === "dark" ? <RACDark /> : <RACLight />}</li>
-            <li>{theme === "dark" ? <TfLDark /> : <TfLLight />}</li>
-            <li>
-              {theme === "dark" ? <TreehuggerDark /> : <TreehuggerLight />}
-            </li>
-            <li>{theme === "dark" ? <ZapmapDark /> : <ZapmapLight />}</li>
-          </List>
-        </ListWrapper>
+        <ScrollContainer>
+          <ListWrapper>
+            <List>
+              <MediaOutlet
+                title="ArchDaily"
+                DarkSVG={ArchDailyDark}
+                LightSVG={ArchDailyLight}
+                href="https://www.archdaily.com/catalog/us/products/23871/timber-construction-of-k-port-electric-vehicle-charging-station-portishead-hess-timber"
+              />
+              <MediaOutlet
+                title="Archello"
+                DarkSVG={ArchelloDark}
+                LightSVG={ArchelloLight}
+                href="https://archello.com/project/kportr-sustainable-mobility-hubs"
+              />
+              <MediaOutlet
+                title="Architizer"
+                DarkSVG={ArchitizerDark}
+                LightSVG={ArchitizerLight}
+                href="https://architizer.com/projects/kport-sustainable-mobility-hubs/"
+              />
+              <MediaOutlet
+                title="Fleet & Leasing"
+                DarkSVG={FleetLeasingDark}
+                LightSVG={FleetLeasingLight}
+                href="https://www.fleetandleasing.com/leasing-news-1/new-kport-sustainable-ev-charging-hubs-unveiled/"
+              />
+              <MediaOutlet
+                title="FutureVehicle"
+                DarkSVG={FutureVehicleDark}
+                LightSVG={FutureVehicleLight}
+                href="https://edition.pagesuite-professional.co.uk/html5/reader/production/default.aspx?pubname=&pubid=31fc6bd2-1ca3-4012-bf77-cdd897167723&pnum=80"
+              />
+              <MediaOutlet
+                title="Holzmagazin"
+                DarkSVG={HolzmagazinDark}
+                LightSVG={HolzmagazinLight}
+                href="https://www.holzmagazin.com/architektur/2741-elektrotankstelle-als-holzkonstruktion"
+              />
+              <MediaOutlet
+                title="RAC Foundation"
+                DarkSVG={RACDark}
+                LightSVG={RACLight}
+                href="https://www.racfoundation.org/assets/rac_foundation/content/downloadables/Ultra_Low_Emission_Vehicle_Infrastructure_Harold_Dermott_September_2017.pdf#page=35"
+              />
+              <MediaOutlet
+                title="Transport for London"
+                DarkSVG={TfLDark}
+                LightSVG={TfLLight}
+                href="https://lruc.content.tfl.gov.uk/london-electric-vehicle-infrastructure-taskforce-delivery-plan.pdf#page=40"
+              />
+              <MediaOutlet
+                title="Treehugger"
+                DarkSVG={TreehuggerDark}
+                LightSVG={TreehuggerLight}
+                href="https://www.treehugger.com/charge-electric-car-in-style-k-port-5201045"
+              />
+              <MediaOutlet
+                title="Zapmap"
+                DarkSVG={ZapmapDark}
+                LightSVG={ZapmapLight}
+                href="https://www.zap-map.com/portishead-to-get-kport-ev-charging-hub/"
+              />
+            </List>
+          </ListWrapper>
+        </ScrollContainer>
       </Container>
     </PressAndFeatures>
   )
