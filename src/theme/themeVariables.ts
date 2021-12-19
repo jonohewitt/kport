@@ -24,6 +24,8 @@ export const lightTheme = {
   linkHover: "rgba(28, 130, 140, 0.3)",
   linkActive: "rgba(28, 130, 140, .5)",
   gallery: "#ddd",
+  media: "#fff",
+  mediaOutline: "#fff",
 }
 
 export const darkTheme: Theme = {
@@ -31,10 +33,10 @@ export const darkTheme: Theme = {
   text: "#fff",
   lightText: "#eee",
   lowContrast: "#757575",
-  nav: "#181b20",
-  background: "#181b20",
+  nav: "#1c2026",
+  background: "#1c2026",
   transparentBG: "#1B1C2200",
-  feature: "#101215",
+  feature: "#13161a",
   partners: "#181b20",
   footer: "#0A0A0C",
   footerText: "#ececec",
@@ -45,4 +47,6 @@ export const darkTheme: Theme = {
   linkHover: "rgba(168, 249, 214, 0.45)",
   linkActive: "rgba(168, 249, 214, 0.6)",
   gallery: "#060606",
+  media: "#060606",
+  mediaOutline: "#333",
 }
