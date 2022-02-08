@@ -3,7 +3,7 @@
   "display": "Node 16",
 
   "compilerOptions": {
-    "lib": ["es2021", "DOM"],
+    "lib": ["ESNext", "DOM"],
     "module": "commonjs",
     "target": "es2021",
     "jsx": "react",
@@ -11,5 +11,14 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "include": [
+    "src/**/*",
+    "config/*",
+    ".eslintrc.js",
+    "gatsby-config.js",
+    "*.ts",
+    "*.tsx"
+  ],
+  "exclude": ["node_modules"]
 }
